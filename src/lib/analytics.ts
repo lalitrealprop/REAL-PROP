@@ -11,10 +11,11 @@ const GA_ID = import.meta.env.VITE_GA_MEASUREMENT_ID as string | undefined;
 export function initAnalytics(): void {
   if (typeof window === 'undefined' || !GA_ID || window.__realPropGAInitialized) return;
 
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = window.gtag || function (...args: unknown[]) {
-    window.dataLayer!.push(args);
-  };
+ window.dataLayer = window.dataLayer || [];
+
+window.gtag = window.gtag || function () {
+  window.dataLayer!.push(arguments);
+};
 
   if (!document.getElementById('real-prop-ga4')) {
     const script = document.createElement('script');
