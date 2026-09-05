@@ -32,9 +32,24 @@ export default function ProjectsSection({ title }: { title?: string }) {
     return () => unsubscribe();
   }, []);
 
-  const filteredProjects = activeCategory === 'All' 
-    ? projects 
-    : projects.filter(p => p.category === activeCategory);
+  const crcProject: Project = {
+    id: 'realprop-crc-the-peridona',
+    title: 'CRC The Peridona',
+    description: 'Ultra-luxury 4 & 5 BHK residences at Jaypee Greens, Greater Noida.',
+    location: 'Jaypee Greens, Greater Noida',
+    type: 'Residential',
+    category: 'Residential',
+    image: '/crc-the-peridona/images/hero/hero-bg.webp',
+    createdAt: null as any,
+  };
+
+  const mergedProjects = projects.some(p => p.title.toLowerCase().includes('crc the peridona'))
+    ? projects
+    : [crcProject, ...projects];
+
+  const filteredProjects = activeCategory === 'All'
+    ? mergedProjects
+    : mergedProjects.filter(p => p.category === activeCategory);
 
   return (
     <div className="container mx-auto px-4">
@@ -115,6 +130,14 @@ export default function ProjectsSection({ title }: { title?: string }) {
                   {project.title.toLowerCase().includes('svg central square') ? (
                     <Link
                       to="/projects/svg-central-square"
+                      className="w-full flex items-center justify-center space-x-2 bg-red-600 hover:bg-red-700 text-white py-4 rounded-xl font-black transition-all shadow-lg shadow-red-600/20 hover:shadow-red-600/40"
+                    >
+                      <span>VIEW PROJECT</span>
+                      <ChevronRight size={20} />
+                    </Link>
+                  ) : project.title.toLowerCase().includes('crc the peridona') ? (
+                    <Link
+                      to="/projects/crc-the-peridona"
                       className="w-full flex items-center justify-center space-x-2 bg-red-600 hover:bg-red-700 text-white py-4 rounded-xl font-black transition-all shadow-lg shadow-red-600/20 hover:shadow-red-600/40"
                     >
                       <span>VIEW PROJECT</span>

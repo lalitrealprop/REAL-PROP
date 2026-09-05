@@ -29,6 +29,7 @@ import NoidaExtension from './pages/NoidaExtension';
 import Ghaziabad from './pages/Ghaziabad';
 import Delhi from './pages/Delhi';
 import SVGCentralSquare from './pages/SVGCentralSquare';
+import CRCThePeridona from './pages/CRCThePeridona';
 
 const ADMIN_EMAIL = "rayashbrothers@gmail.com";
 
@@ -123,23 +124,52 @@ export default function App() {
 
   return (
     <Router>
-      <div className="min-h-screen flex flex-col font-sans text-gray-900">
-        <Navbar isAdmin={isAdmin} />
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/greater-noida" element={<GreaterNoida />} />
-            <Route path="/noida" element={<Noida />} />
-            <Route path="/noida-extension" element={<NoidaExtension />} />
-            <Route path="/ghaziabad" element={<Ghaziabad />} />
-            <Route path="/delhi" element={<Delhi />} />
-            <Route path="/projects/svg-central-square" element={<SVGCentralSquare />} />
-            <Route path="/admin/*" element={<AdminDashboard user={user} isAdmin={isAdmin} onLogin={handleCustomLogin} onLogout={handleCustomLogout} />} />
-          </Routes>
-        </main>
-        <Footer />
-        <FloatingButtons />
-      </div>
+      <AppShell
+        isAdmin={isAdmin}
+        user={user}
+        handleCustomLogin={handleCustomLogin}
+        handleCustomLogout={handleCustomLogout}
+      />
     </Router>
+  );
+}
+
+function AppShell({
+  isAdmin,
+  user,
+  handleCustomLogin,
+  handleCustomLogout,
+}: {
+  isAdmin: boolean;
+  user: User | null;
+  handleCustomLogin: (success: boolean) => void;
+  handleCustomLogout: () => void;
+}) {
+  const location = useLocation();
+  const isCRCProject = location.pathname === '/projects/crc-the-peridona';
+
+  if (isCRCProject) {
+    return <CRCThePeridona />;
+  }
+
+  return (
+    <div className="min-h-screen flex flex-col font-sans text-gray-900">
+      <Navbar isAdmin={isAdmin} />
+      <main className="flex-grow">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/greater-noida" element={<GreaterNoida />} />
+          <Route path="/noida" element={<Noida />} />
+          <Route path="/noida-extension" element={<NoidaExtension />} />
+          <Route path="/ghaziabad" element={<Ghaziabad />} />
+          <Route path="/delhi" element={<Delhi />} />
+          <Route path="/projects/svg-central-square" element={<SVGCentralSquare />} />
+          <Route path="/projects/crc-the-peridona" element={<CRCThePeridona />} />
+          <Route path="/admin/*" element={<AdminDashboard user={user} isAdmin={isAdmin} onLogin={handleCustomLogin} onLogout={handleCustomLogout} />} />
+        </Routes>
+      </main>
+      <Footer />
+      <FloatingButtons />
+    </div>
   );
 }

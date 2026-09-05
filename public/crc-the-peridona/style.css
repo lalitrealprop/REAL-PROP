@@ -1,0 +1,6515 @@
+/*====================================================
+        CRC THE PERIDONA V2
+        PREMIUM LUXURY DESIGN SYSTEM
+=====================================================*/
+
+/*==========================
+        RESET
+==========================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#050816;
+
+    color:#ffffff;
+
+    overflow-x:hidden;
+
+    line-height:1.6;
+
+}
+
+/*=========================================
+        IMAGE PERFORMANCE
+==========================================*/
+
+img{
+
+    max-width:100%;
+
+    display:block;
+
+    height:auto;
+
+    image-rendering:auto;
+
+}
+
+img[loading="lazy"]{
+
+    content-visibility:auto;
+
+}
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+ul{
+
+    list-style:none;
+
+}
+
+button{
+
+    font-family:inherit;
+
+    cursor:pointer;
+
+    border:none;
+
+}
+
+/*==========================
+        ROOT VARIABLES
+==========================*/
+
+:root{
+
+    --bg:#050816;
+
+    --bg-light:#09111d;
+
+    --bg-card:rgba(255,255,255,.05);
+
+    --gold:#d4af37;
+
+    --gold-light:#f2d67c;
+
+    --white:#ffffff;
+
+    --text:#d7d7d7;
+
+    --border:rgba(212,175,55,.18);
+
+    --glass:rgba(255,255,255,.05);
+
+    --shadow:0 15px 40px rgba(0,0,0,.35);
+
+    --radius:18px;
+
+    --transition:.35s ease;
+
+}
+
+/*==========================
+        CONTAINER
+==========================*/
+
+.container{
+
+    width:90%;
+
+    max-width:1400px;
+
+    margin:auto;
+
+}
+
+/*==========================
+        SECTION
+==========================*/
+
+section{
+
+    position:relative;
+
+    padding:100px 0;
+
+}
+
+/*==========================
+        TYPOGRAPHY
+==========================*/
+
+h1,h2,h3,h4{
+
+    font-family:'Playfair Display',serif;
+
+    font-weight:600;
+
+}
+
+h1{
+
+    font-size:88px;
+
+    line-height:.9;
+
+}
+
+h2{
+
+    font-size:56px;
+
+}
+
+h3{
+
+    font-size:34px;
+
+}
+
+p{
+
+    color:var(--text);
+
+    font-size:17px;
+
+}
+
+/*==========================
+        BUTTONS
+==========================*/
+
+.btn-primary{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    padding:18px 36px;
+
+    border-radius:50px;
+
+    background:linear-gradient(135deg,var(--gold),#b88925);
+
+    color:#000;
+
+    font-weight:700;
+
+    transition:var(--transition);
+
+    box-shadow:0 15px 35px rgba(212,175,55,.28);
+
+}
+
+.btn-primary:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 25px 50px rgba(212,175,55,.45);
+
+}
+
+.btn-outline{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:18px 36px;
+
+    border-radius:50px;
+
+    border:1px solid rgba(255,255,255,.30);
+
+    color:#fff;
+
+    transition:var(--transition);
+
+    backdrop-filter:blur(10px);
+
+}
+
+.btn-outline:hover{
+
+    background:#fff;
+
+    color:#000;
+
+}
+
+/*==========================
+        NAVBAR
+==========================*/
+
+.navbar{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    z-index:9999;
+
+    padding:20px 0;
+
+    background:rgba(5,8,22,.25);
+
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.navbar .container{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.logo img{
+
+height:58px;
+
+}
+.nav-menu{
+
+    display:flex;
+
+    gap:40px;
+
+}
+
+.nav-menu a{
+
+    color:#fff;
+
+    font-weight:500;
+
+    position:relative;
+
+    transition:var(--transition);
+
+}
+
+.nav-menu a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-8px;
+
+    width:0;
+
+    height:2px;
+
+    background:var(--gold);
+
+    transition:var(--transition);
+
+}
+
+.nav-menu a:hover{
+
+    color:var(--gold);
+
+}
+
+.nav-menu a:hover::after{
+
+    width:100%;
+
+}
+
+.nav-btn a{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:16px 34px;
+
+    background:linear-gradient(135deg,var(--gold),#b88925);
+
+    color:#000;
+
+    font-weight:700;
+
+    border-radius:50px;
+
+    transition:var(--transition);
+
+}
+
+.nav-btn a:hover{
+
+    transform:translateY(-3px);
+
+}
+
+/*==========================
+        HERO
+==========================*/
+
+.hero{
+
+    position:relative;
+
+    min-height:100vh;
+
+    padding:140px 0 80px;
+
+    display:flex;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    background:
+    linear-gradient(
+        90deg,
+        rgba(4,7,14,.88) 0%,
+        rgba(4,7,14,.70) 35%,
+        rgba(4,7,14,.45) 60%,
+        rgba(4,7,14,.18) 100%
+    ),
+    url("./images/hero/hero-bg.webp");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+}
+
+.hero-container{
+
+    display:grid;
+
+    grid-template-columns:1.15fr .85fr;
+
+    align-items:center;
+
+    gap:60px;
+
+}
+
+/*==========================
+        RESPONSIVE
+==========================*/
+
+@media(max-width:991px){
+
+.nav-menu{
+
+display:none;
+
+}
+
+.hero-container{
+
+grid-template-columns:1fr;
+
+gap:50px;
+
+}
+
+h1{
+
+font-size:56px;
+
+}
+
+h2{
+
+font-size:40px;
+
+}
+
+.logo img{
+
+height:48px;
+
+}
+
+.nav-btn{
+
+display:none;
+
+}
+
+}
+
+@media (max-width:768px){
+
+.hero-container{
+
+display:flex;
+
+flex-direction:column;
+
+gap:24px;
+
+}
+
+}
+
+/*==========================================
+        HERO CONTENT
+==========================================*/
+
+.hero-badge{
+
+display:inline-block;
+
+padding:12px 28px;
+
+border-radius:40px;
+
+background:rgba(212,175,55,.12);
+
+border:1px solid rgba(212,175,55,.25);
+
+color:var(--gold);
+
+font-size:13px;
+
+letter-spacing:3px;
+
+margin-bottom:30px;
+
+}
+
+.hero-title{
+
+    font-size:96px;
+
+    line-height:.92;
+
+    color:#d4af37;
+
+    margin-bottom:15px;
+
+    text-shadow:0 8px 30px rgba(0,0,0,.45);
+
+}
+
+.hero-subtitle{
+
+    font-size:54px;
+
+    line-height:1.1;
+
+    margin-bottom:20px;
+
+}
+
+.hero-description{
+
+    font-size:18px;
+
+    max-width:620px;
+
+    line-height:1.8;
+
+    margin-bottom:30px;
+
+}
+
+.hero-price{
+
+    display:flex;
+
+    gap:30px;
+
+    align-items:center;
+
+    margin-bottom:35px;
+
+}
+
+.hero-price span{
+
+font-size:12px;
+
+letter-spacing:2px;
+
+color:var(--gold);
+
+}
+
+.hero-price h3{
+
+font-size:40px;
+
+margin-top:10px;
+
+}
+
+.hero-price h4{
+
+font-size:40px;
+
+margin-top:15px;
+
+
+
+}
+
+.hero-buttons{
+
+display:flex;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+margin-top:20px;
+
+}
+
+/*==========================
+        LEAD FORM
+==========================*/
+
+.lead-card{
+
+    background:rgba(8,12,22,.82);
+
+    padding:38px;
+
+    border-radius:24px;
+
+    border:1px solid rgba(212,175,55,.22);
+
+    backdrop-filter:blur(10px);
+-webkit-backdrop-filter:blur(10px);
+
+    box-shadow:0 35px 80px rgba(0,0,0,.45);
+
+}
+
+.lead-card h3{
+
+    font-size:38px;
+    margin-bottom:10px;
+    color:#fff;
+
+}
+
+.lead-card p{
+
+    margin-bottom:30px;
+
+}
+
+#leadForm{
+
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+
+}
+
+.lead-card input,
+.lead-card select,
+.lead-card textarea{
+
+    width:100%;
+    padding:18px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:12px;
+    color:#fff;
+    font-size:16px;
+    outline:none;
+    transition:.3s;
+
+}
+
+.lead-card textarea{
+
+    min-height:140px;
+    resize:vertical;
+
+}
+
+.lead-card input:focus,
+.lead-card select:focus,
+.lead-card textarea:focus{
+
+    border-color:#d4af37;
+
+}
+
+.lead-card input::placeholder,
+.lead-card textarea::placeholder{
+
+    color:#aaaaaa;
+
+}
+
+.lead-card select option{
+
+    background:#111827;
+    color:#ffffff;
+
+}
+
+input[type="date"]{
+
+    color:#ffffff;
+
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator{
+
+    filter:invert(1);
+
+}
+
+.lead-card button{
+
+    width:100%;
+    padding:18px;
+    border-radius:50px;
+    background:linear-gradient(135deg,#d4af37,#b88925);
+    color:#000;
+    font-size:18px;
+    font-weight:700;
+    transition:.35s;
+
+}
+
+.lead-card button:hover{
+
+    transform:translateY(-4px);
+    box-shadow:0 20px 40px rgba(212,175,55,.35);
+
+}
+
+.privacy-text{
+
+    margin-top:20px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#bbb;
+    font-size:14px;
+
+}
+/*=========================
+      HERO GOLD GLOW
+=========================*/
+
+.hero::before{
+
+content:"";
+
+position:absolute;
+
+width:700px;
+
+height:700px;
+
+right:-150px;
+
+top:-150px;
+
+border-radius:50%;
+
+background:
+radial-gradient(
+circle,
+rgba(212,175,55,.12),
+transparent 70%);
+
+filter:blur(80px);
+
+animation:glowMove 8s ease-in-out infinite alternate;
+
+z-index:-1;
+
+}
+
+@keyframes glowMove{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+100%{
+
+transform:translateY(60px);
+
+}
+
+}
+
+.hero::after{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+background-image:
+
+radial-gradient(#d4af37 1px, transparent 1px),
+
+radial-gradient(#ffffff 1px, transparent 1px);
+
+background-size:
+
+180px 180px,
+
+260px 260px;
+
+opacity:.15;
+
+animation:particlesMove 25s linear infinite;
+
+pointer-events:none;
+
+}
+
+@keyframes particlesMove{
+
+from{
+
+transform:translateY(0);
+
+}
+
+to{
+
+transform:translateY(-120px);
+
+}
+
+}
+
+.hero-stats{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:20px;
+
+margin-top:60px;
+
+max-width:800px;
+
+}
+
+.stat-card{
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(212,175,55,.15);
+
+border-radius:18px;
+
+padding:25px;
+
+backdrop-filter:blur(12px);
+
+transition:.35s;
+
+}
+
+.stat-card:hover{
+
+transform:translateY(-8px);
+
+border-color:#d4af37;
+
+box-shadow:0 20px 40px rgba(212,175,55,.20);
+
+}
+
+.stat-card h3{
+
+font-size:52px;
+
+color:#d4af37;
+
+margin-bottom:10px;
+
+}
+
+.stat-card p{
+
+font-size:15px;
+
+color:#fff;
+
+margin:0;
+
+}
+.scroll-indicator{
+
+position:absolute;
+
+bottom:40px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+width:34px;
+
+height:55px;
+
+border:2px solid rgba(255,255,255,.35);
+
+border-radius:30px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:flex-start;
+
+padding-top:10px;
+
+}
+
+.scroll-indicator span{
+
+width:6px;
+
+height:12px;
+
+background:#d4af37;
+
+border-radius:20px;
+
+animation:scrollDown 1.8s infinite;
+
+}
+
+@keyframes scrollDown{
+
+0%{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+100%{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+}
+/*=========================================
+        ULTRA LUXURY STRIP
+=========================================*/
+
+.hero-strip{
+
+margin-top:0px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:28px 35px;
+
+background:rgba(255,255,255,.04);
+
+backdrop-filter:blur(10px);
+-webkit-backdrop-filter:blur(10px);
+
+border:1px solid rgba(212,175,55,.18);
+
+border-radius:22px;
+
+max-width:1500px;
+
+box-shadow:0 20px 60px rgba(0,0,0,.25);
+
+}
+
+.strip-box{
+
+flex:1;
+
+text-align:center;
+
+}
+
+.strip-box h2{
+
+font-size:54px;
+
+color:#d4af37;
+
+font-family:'Playfair Display',serif;
+
+font-weight:600;
+
+margin-bottom:8px;
+
+line-height:1;
+
+}
+
+.strip-box span{
+
+display:block;
+
+font-size:11px;
+
+letter-spacing:4px;
+
+color:#d4af37;
+
+margin-bottom:6px;
+
+text-transform:uppercase;
+
+}
+
+.strip-box p{
+
+font-size:15px;
+
+color:#ffffff;
+
+letter-spacing:1px;
+
+margin:0;
+
+}
+
+.strip-line{
+
+width:1px;
+
+height:70px;
+
+background:linear-gradient(
+
+to bottom,
+
+transparent,
+
+rgba(212,175,55,.45),
+
+transparent
+
+);
+
+}
+/*=========================================
+        DESIGN PARTNERS
+=========================================*/
+
+.design-partners{
+
+padding:120px 0;
+
+background:linear-gradient(180deg,#07111d,#050816);
+
+overflow:hidden;
+
+}
+
+.section-heading{
+
+text-align:center;
+
+max-width:760px;
+
+margin:auto;
+
+margin-bottom:70px;
+
+}
+
+.section-heading span{
+
+display:inline-block;
+
+color:var(--gold);
+
+letter-spacing:4px;
+
+font-size:13px;
+
+margin-bottom:18px;
+
+}
+
+.section-heading h2{
+
+font-size:58px;
+
+color:#fff;
+
+margin-bottom:20px;
+
+}
+
+.section-heading p{
+
+font-size:18px;
+
+line-height:1.8;
+
+color:#bfbfbf;
+
+}
+
+.partner-grid{
+
+display:grid;
+
+grid-template-columns:repeat(5,1fr);
+
+gap:30px;
+
+}
+
+.partner-card{
+
+height:220px;
+
+background:rgba(255,255,255,.04);
+
+border:1px solid rgba(212,175,55,.12);
+
+border-radius:24px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+padding:30px;
+
+transition:.4s;
+
+backdrop-filter:blur(10px);
+-webkit-backdrop-filter:blur(10px);
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.partner-card::before{
+
+content:"";
+
+position:absolute;
+
+left:-120%;
+
+top:0;
+
+width:100%;
+
+height:100%;
+
+background:linear-gradient(
+
+90deg,
+
+transparent,
+
+rgba(255,255,255,.08),
+
+transparent
+
+);
+
+transition:.8s;
+
+}
+
+.partner-card:hover::before{
+
+left:120%;
+
+}
+
+.partner-card:hover{
+
+transform:translateY(-12px);
+
+border-color:rgba(212,175,55,.45);
+
+box-shadow:0 25px 60px rgba(212,175,55,.15);
+
+}
+
+.partner-card img{
+
+max-width:160px;
+
+max-height:95px;
+
+filter:brightness(1.1);
+
+transition:.35s;
+
+}
+
+.partner-card:hover img{
+
+transform:scale(1.08);
+
+}
+
+@media(max-width:1200px){
+
+.partner-grid{
+
+grid-template-columns:repeat(3,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.partner-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.section-heading h2{
+
+font-size:40px;
+
+}
+
+}
+
+@media(max-width:520px){
+
+.partner-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.partner-card{
+
+height:180px;
+
+}
+
+}
+/*==================================================
+            ULTRA LUXURY EXPERIENCE V2
+==================================================*/
+
+.luxury-experience{
+
+    padding:100px 0 90px;
+
+    background:linear-gradient(180deg,#08111d,#050816);
+
+    overflow:hidden;
+
+}
+
+/*==========================
+    SECTION HEADER
+==========================*/
+
+.experience-header{
+
+    max-width:900px;
+
+    margin:0 auto 60px;
+
+    text-align:center;
+
+}
+
+.experience-tag{
+
+    display:inline-block;
+
+    color:#d4af37;
+
+    letter-spacing:5px;
+
+    font-size:13px;
+
+    font-weight:500;
+
+    margin-bottom:18px;
+
+}
+
+.experience-header h2{
+
+    font-size:58px;
+
+    color:#fff;
+
+    margin-bottom:22px;
+
+    line-height:1.15;
+
+}
+
+.gold-divider{
+
+    width:120px;
+
+    height:2px;
+
+    background:#d4af37;
+
+    margin:25px auto;
+
+}
+
+.experience-header p{
+
+    max-width:760px;
+
+    margin:auto;
+
+    color:#bdbdbd;
+
+    line-height:1.9;
+
+    font-size:18px;
+
+}
+
+/*==========================
+      GRID
+==========================*/
+
+.experience-grid{
+
+    display:grid;
+
+    grid-template-columns:60% 40%;
+
+    gap:55px;
+
+    align-items:center;
+
+}
+
+/*==========================
+        VIDEO
+==========================*/
+
+.experience-video{
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:26px;
+
+    border:1px solid rgba(212,175,55,.18);
+
+    box-shadow:0 35px 80px rgba(0,0,0,.45);
+
+}
+
+.experience-video video{
+
+    width:100%;
+
+    display:block;
+
+    aspect-ratio:16/9;
+
+    object-fit:cover;
+
+    transition:.7s;
+
+}
+
+.experience-video:hover video{
+
+    transform:scale(1.05);
+
+}
+
+.video-gradient{
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        180deg,
+
+        transparent,
+
+        rgba(0,0,0,.15),
+
+        rgba(0,0,0,.45)
+
+    );
+
+    pointer-events:none;
+
+}
+
+/*==========================
+      RIGHT PANEL
+==========================*/
+
+.experience-panel{
+
+    position:relative;
+
+    padding:45px;
+
+    background:rgba(255,255,255,.05);
+
+    backdrop-filter:blur(10px);
+-webkit-backdrop-filter:blur(10px);
+
+    border-radius:26px;
+
+    border:1px solid rgba(212,175,55,.15);
+
+    box-shadow:0 30px 80px rgba(0,0,0,.35);
+
+}
+
+.experience-panel::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:45px;
+
+    width:4px;
+
+    height:110px;
+
+    background:#d4af37;
+
+    border-radius:20px;
+
+}
+
+.panel-subtitle{
+
+    display:block;
+
+    padding-left:18px;
+
+    color:#d4af37;
+
+    letter-spacing:4px;
+
+    font-size:13px;
+
+    margin-bottom:15px;
+
+}
+
+.experience-panel h3{
+
+    padding-left:18px;
+
+    font-size:40px;
+
+    line-height:1.25;
+
+    margin-bottom:18px;
+
+}
+
+.experience-panel>p{
+
+    padding-left:18px;
+
+    margin-bottom:35px;
+
+    line-height:1.9;
+
+    color:#cfcfcf;
+
+}
+
+/*==========================
+      FEATURES
+==========================*/
+
+.feature-box{
+
+    display:flex;
+
+    gap:18px;
+
+    align-items:flex-start;
+
+    padding:20px;
+
+    margin-bottom:15px;
+
+    border-left:2px solid #d4af37;
+
+    background:rgba(255,255,255,.04);
+
+    border-radius:14px;
+
+    transition:.35s;
+
+}
+
+.feature-box:hover{
+
+    transform:translateX(8px);
+
+    background:rgba(255,255,255,.08);
+
+}
+
+.feature-box span{
+
+    min-width:48px;
+
+    font-size:30px;
+
+    color:#d4af37;
+
+    font-family:'Playfair Display',serif;
+
+    font-weight:600;
+
+    line-height:1;
+
+}
+
+.feature-box h4{
+
+    color:#fff;
+
+    font-size:19px;
+
+    margin-bottom:8px;
+
+}
+
+.feature-box p{
+
+    margin:0;
+
+    color:#bdbdbd;
+
+    line-height:1.7;
+
+    font-size:15px;
+
+}
+
+/*==========================
+      QUOTE
+==========================*/
+
+.experience-quote{
+
+    max-width:900px;
+
+    margin:70px auto 0;
+
+    text-align:center;
+
+}
+
+.experience-quote span{
+
+    display:block;
+
+    color:#d4af37;
+
+    letter-spacing:5px;
+
+    font-size:13px;
+
+    margin-bottom:18px;
+
+}
+
+.experience-quote h3{
+
+    color:#fff;
+
+    font-size:34px;
+
+    line-height:1.7;
+
+    font-weight:400;
+
+    font-style:italic;
+
+}
+
+/*==========================
+      RESPONSIVE
+==========================*/
+
+@media(max-width:992px){
+
+    .experience-grid{
+
+        grid-template-columns:1fr;
+
+        gap:40px;
+
+    }
+
+    .experience-panel{
+
+        padding:35px;
+
+    }
+
+    .experience-header h2{
+
+        font-size:42px;
+
+    }
+
+    .experience-quote h3{
+
+        font-size:26px;
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    .luxury-experience{
+
+        padding:80px 0;
+
+    }
+
+    .experience-header h2{
+
+        font-size:34px;
+
+    }
+
+    .experience-panel{
+
+        padding:28px;
+
+    }
+
+    .feature-box{
+
+        padding:16px;
+
+    }
+
+}
+/*=========================================
+        WHY THE PERIDONA
+=========================================*/
+
+.why-peridona{
+
+padding:120px 0;
+
+background:#050816;
+
+}
+
+.why-grid{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:30px;
+
+margin-top:70px;
+
+}
+
+.why-card{
+
+padding:55px 35px;
+
+background:rgba(255,255,255,.04);
+
+border:1px solid rgba(212,175,55,.15);
+
+border-radius:24px;
+
+text-align:center;
+
+transition:.4s;
+
+}
+
+.why-card:hover{
+
+transform:translateY(-10px);
+
+border-color:#d4af37;
+
+box-shadow:0 25px 60px rgba(212,175,55,.15);
+
+}
+
+.why-card h3{
+
+font-size:64px;
+
+font-family:'Playfair Display',serif;
+
+color:#d4af37;
+
+margin-bottom:15px;
+
+}
+
+.why-card span{
+
+font-size:18px;
+
+color:#fff;
+
+letter-spacing:1px;
+
+}
+
+.why-quote{
+
+max-width:900px;
+
+margin:90px auto 0;
+
+text-align:center;
+
+}
+
+.why-quote h3{
+
+font-size:36px;
+
+line-height:1.7;
+
+font-style:italic;
+
+font-weight:400;
+
+color:#ffffff;
+
+}
+
+@media(max-width:992px){
+
+.why-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:576px){
+
+.why-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.why-card h3{
+
+font-size:48px;
+
+}
+
+.why-quote h3{
+
+font-size:28px;
+
+}
+
+}
+
+/*=====================================================
+        THE PERIDONA EXPERIENCE
+======================================================*/
+
+.experience-story{
+
+padding:140px 0 60px;
+
+background:#050816;
+
+}
+
+.story-header{
+
+max-width:900px;
+
+margin:auto;
+
+text-align:center;
+
+}
+
+.story-header span{
+
+display:inline-block;
+
+font-size:13px;
+
+letter-spacing:5px;
+
+color:#d4af37;
+
+margin-bottom:20px;
+
+}
+
+.story-header h2{
+
+font-size:68px;
+
+line-height:1.15;
+
+margin-bottom:25px;
+
+}
+
+.story-header p{
+
+font-size:19px;
+
+line-height:1.9;
+
+color:#c9c9c9;
+
+max-width:760px;
+
+margin:auto;
+
+}
+
+/*=====================================================
+            STORY BLOCK
+======================================================*/
+
+.story-block{
+
+padding:80px 0 140px;
+
+background:#050816;
+
+}
+
+.story-grid{
+
+display:grid;
+
+grid-template-columns:45% 55%;
+
+gap:70px;
+
+align-items:center;
+
+}
+
+.chapter-number{
+
+font-size:90px;
+
+font-family:'Playfair Display',serif;
+
+color:rgba(212,175,55,.18);
+
+margin-bottom:10px;
+
+}
+
+.story-tag{
+
+display:block;
+
+letter-spacing:4px;
+
+font-size:13px;
+
+color:#d4af37;
+
+margin-bottom:20px;
+
+}
+
+.story-content h2{
+
+font-size:58px;
+
+line-height:1.15;
+
+margin-bottom:20px;
+
+}
+
+.gold-line{
+
+width:120px;
+
+height:2px;
+
+background:#d4af37;
+
+margin:25px 0;
+
+}
+
+.story-content p{
+
+font-size:18px;
+
+line-height:1.9;
+
+margin-bottom:45px;
+
+}
+
+.story-features{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:30px;
+
+margin-bottom:50px;
+
+}
+
+.story-features h3{
+
+font-size:52px;
+
+color:#d4af37;
+
+margin-bottom:5px;
+
+}
+
+.story-features span{
+
+font-size:15px;
+
+color:#fff;
+
+letter-spacing:1px;
+
+}
+
+.story-image{
+
+overflow:hidden;
+
+border-radius:30px;
+
+box-shadow:0 35px 90px rgba(0,0,0,.45);
+
+}
+
+.story-image img,
+.partner-card img,
+.amenity-card img,
+.featured-amenity img{
+
+transition:transform .45s ease;
+
+will-change:transform;
+
+}
+
+.story-image:hover img{
+
+transform:scale(1.06);
+
+}
+
+/*=====================================================
+        RESPONSIVE
+======================================================*/
+
+@media(max-width:992px){
+
+.story-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.story-header h2{
+
+font-size:44px;
+
+}
+
+.story-content h2{
+
+font-size:42px;
+
+}
+
+.story-features{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:576px){
+
+.story-features{
+
+grid-template-columns:1fr;
+
+}
+
+.chapter-number{
+
+font-size:60px;
+
+}
+
+.story-header h2{
+
+font-size:34px;
+
+}
+
+.story-content h2{
+
+font-size:32px;
+
+}
+
+}
+/*=========================================
+      ALTERNATE LAYOUT
+=========================================*/
+
+.story-block.alternate{
+
+background:#08111d;
+
+}
+
+.story-block.alternate .story-grid{
+
+grid-template-columns:55% 45%;
+
+}
+
+.story-block.alternate .story-image{
+
+order:1;
+
+}
+
+.story-block.alternate .story-content{
+
+order:2;
+
+}
+
+@media(max-width:992px){
+
+.story-block.alternate .story-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.story-block.alternate .story-image,
+
+.story-block.alternate .story-content{
+
+order:unset;
+
+}
+
+}
+/*=========================================
+        CLUB GRID
+=========================================*/
+
+.club-grid{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:18px;
+
+margin:45px 0;
+
+}
+
+.club-item{
+
+padding:22px;
+
+background:rgba(255,255,255,.04);
+
+border:1px solid rgba(212,175,55,.12);
+
+border-radius:16px;
+
+transition:.35s;
+
+}
+
+.club-item:hover{
+
+transform:translateY(-6px);
+
+border-color:#d4af37;
+
+background:rgba(255,255,255,.07);
+
+}
+
+.club-item h4{
+
+font-size:34px;
+
+font-family:'Playfair Display',serif;
+
+color:#d4af37;
+
+margin-bottom:8px;
+
+}
+
+.club-item span{
+
+font-size:15px;
+
+color:#fff;
+
+letter-spacing:1px;
+
+}
+
+@media(max-width:576px){
+
+.club-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+/*====================================================
+                ROOFTOP
+====================================================*/
+
+.rooftop-section{
+
+background:#08111d;
+
+}
+
+.rooftop-list{
+
+display:flex;
+
+flex-direction:column;
+
+gap:18px;
+
+margin:45px 0;
+
+}
+
+.roof-item{
+
+padding:22px 25px;
+
+background:rgba(255,255,255,.04);
+
+border-left:3px solid #d4af37;
+
+border-radius:16px;
+
+transition:.35s;
+
+}
+
+.roof-item:hover{
+
+transform:translateX(8px);
+
+background:rgba(255,255,255,.08);
+
+}
+
+.roof-item h4{
+
+font-size:22px;
+
+margin-bottom:10px;
+
+color:#fff;
+
+}
+
+.roof-item p{
+
+margin:0;
+
+color:#cfcfcf;
+
+line-height:1.8;
+
+}
+/*==================================================
+            AMENITIES SHOWCASE
+==================================================*/
+
+.amenities-showcase{
+
+    padding:140px 0;
+
+    background:linear-gradient(180deg,#07111d,#050816);
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+/* Decorative Glow */
+
+.amenities-showcase::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:700px;
+
+    height:700px;
+
+    top:-250px;
+
+    right:-250px;
+
+    background:radial-gradient(circle,
+    rgba(212,175,55,.10),
+    transparent 70%);
+
+    filter:blur(80px);
+
+    pointer-events:none;
+
+}
+
+.amenities-showcase::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:600px;
+
+    height:600px;
+
+    left:-250px;
+
+    bottom:-250px;
+
+    background:radial-gradient(circle,
+    rgba(255,255,255,.05),
+    transparent 70%);
+
+    filter:blur(100px);
+
+}
+
+/*==================================================
+        FEATURED IMAGE
+==================================================*/
+
+.featured-amenity{
+
+    position:relative;
+
+    margin:80px 0;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(212,175,55,.15);
+
+    box-shadow:0 40px 100px rgba(0,0,0,.45);
+
+}
+
+.featured-amenity img{
+
+    width:100%;
+
+    height:680px;
+
+    object-fit:cover;
+
+    display:block;
+
+    transition:1.2s;
+
+}
+
+.featured-amenity:hover img{
+
+    transform:scale(1.06);
+
+}
+
+.featured-amenity::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+    180deg,
+
+    rgba(0,0,0,.10),
+
+    rgba(0,0,0,.20),
+
+    rgba(0,0,0,.70)
+
+    );
+
+}
+
+/*==================================================
+        FEATURED CONTENT
+==================================================*/
+
+.featured-overlay{
+
+    position:absolute;
+
+    left:70px;
+
+    bottom:70px;
+
+    max-width:600px;
+
+    z-index:2;
+
+}
+
+.featured-overlay span{
+
+    display:inline-block;
+
+    color:#d4af37;
+
+    letter-spacing:5px;
+
+    font-size:13px;
+
+    margin-bottom:18px;
+
+}
+
+.featured-overlay h2{
+
+    font-size:60px;
+
+    line-height:1.1;
+
+    margin-bottom:20px;
+
+    color:#fff;
+
+}
+
+.featured-overlay p{
+
+    color:#e0e0e0;
+
+    line-height:1.9;
+
+    font-size:18px;
+
+}
+
+/*==================================================
+        GRID
+==================================================*/
+
+.amenities-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:35px;
+
+}
+
+/*==================================================
+        CARD
+==================================================*/
+
+.amenity-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:24px;
+
+    background:#111;
+
+    transition:
+
+transform .35s ease,
+
+box-shadow .35s ease,
+
+border-color .35s ease;
+
+    border:1px solid rgba(212,175,55,.12);
+
+}
+
+.amenity-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 35px 80px rgba(0,0,0,.45);
+
+}
+
+.amenity-card img{
+
+    width:100%;
+
+    height:340px;
+
+    object-fit:cover;
+
+    display:block;
+
+    transition:.9s;
+
+}
+
+.amenity-card:hover img{
+
+    transform:scale(1.08);
+
+}
+
+.amenity-card.large img{
+
+    height:460px;
+
+}
+
+/* Dark Overlay */
+
+.amenity-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+    180deg,
+
+    transparent,
+
+    rgba(0,0,0,.75)
+
+    );
+
+}
+
+/*==================================================
+        CARD CONTENT
+==================================================*/
+
+.amenity-info{
+
+    position:absolute;
+
+    left:35px;
+
+    bottom:35px;
+
+    z-index:2;
+
+    max-width:80%;
+
+}
+
+.amenity-info span{
+
+    color:#d4af37;
+
+    font-size:14px;
+
+    letter-spacing:4px;
+
+}
+
+.amenity-info h3{
+
+    color:#fff;
+
+    font-size:34px;
+
+    margin:10px 0;
+
+}
+
+.amenity-info p{
+
+    color:#ddd;
+
+    line-height:1.8;
+
+    margin:0;
+
+}
+
+/*==================================================
+        QUOTE
+==================================================*/
+
+.amenity-quote{
+
+    max-width:950px;
+
+    margin:100px auto 0;
+
+    text-align:center;
+
+}
+
+.amenity-quote h2{
+
+    font-size:46px;
+
+    line-height:1.5;
+
+    font-weight:300;
+
+    color:#fff;
+
+    font-style:italic;
+
+}
+
+/*==================================================
+        RESPONSIVE
+==================================================*/
+
+@media(max-width:1200px){
+
+.featured-overlay h2{
+
+font-size:48px;
+
+}
+
+}
+
+@media(max-width:991px){
+
+.featured-amenity img{
+
+height:500px;
+
+}
+
+.featured-overlay{
+
+left:40px;
+
+right:40px;
+
+bottom:40px;
+
+}
+
+.featured-overlay h2{
+
+font-size:40px;
+
+}
+
+.amenities-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.amenity-card.large img{
+
+height:340px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.featured-overlay{
+
+left:25px;
+
+right:25px;
+
+bottom:25px;
+
+}
+
+.featured-overlay h2{
+
+font-size:32px;
+
+}
+
+.featured-overlay p{
+
+font-size:16px;
+
+}
+
+.featured-amenity img{
+
+height:380px;
+
+}
+
+.amenity-card img{
+
+height:260px;
+
+}
+
+.amenity-info{
+
+left:20px;
+
+bottom:20px;
+
+}
+
+.amenity-info h3{
+
+font-size:28px;
+
+}
+
+.amenity-quote h2{
+
+font-size:30px;
+
+}
+
+}
+/*====================================================
+        SCROLL REVEAL
+====================================================*/
+
+.hidden{
+
+opacity:0;
+
+transform:translateY(80px);
+
+transition:all .9s ease;
+
+}
+
+.show{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+/* REAL PROP route safety: never hide a primary CRC section
+   if an IntersectionObserver is delayed or unavailable. */
+.crc-peridona-root .story-block,
+.crc-peridona-root .amenities-showcase,
+.crc-peridona-root .story-block.hidden,
+.crc-peridona-root .amenities-showcase.hidden,
+.crc-peridona-root .featured-amenity.hidden,
+.crc-peridona-root .amenity-card.hidden,
+.crc-peridona-root .partner-card.hidden {
+    opacity:1 !important;
+    transform:none !important;
+}
+
+
+/*====================================================
+        BUTTON HOVER EFFECT
+====================================================*/
+
+.btn-primary{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.btn-primary::before{
+
+content:"";
+
+position:absolute;
+
+width:0;
+
+height:0;
+
+left:var(--x);
+
+top:var(--y);
+
+transform:translate(-50%,-50%);
+
+background:rgba(255,255,255,.18);
+
+border-radius:50%;
+
+transition:.5s;
+
+}
+
+.btn-primary:hover::before{
+
+width:320px;
+
+height:320px;
+
+}
+
+
+/*====================================================
+        IMAGE SMOOTH
+====================================================*/
+
+.story-image img,
+.featured-amenity img{
+
+will-change:transform;
+
+}
+
+
+/*====================================================
+        CARD HOVER
+====================================================*/
+
+.amenity-card,
+.story-image,
+.partner-card,
+.highlight-card{
+
+transition:transform .45s ease,
+box-shadow .45s ease;
+
+}
+/*==================================================
+            FLOOR PLANS V2
+==================================================*/
+
+.floor-plans{
+
+    padding:140px 0;
+
+    background:linear-gradient(180deg,#08111d,#050816);
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+/* Decorative Glow */
+
+.floor-plans::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:700px;
+
+    height:700px;
+
+    right:-250px;
+
+    top:-250px;
+
+    background:radial-gradient(circle,
+    rgba(212,175,55,.08),
+    transparent 70%);
+
+    filter:blur(90px);
+
+}
+
+.floor-plans::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:600px;
+
+    height:600px;
+
+    left:-250px;
+
+    bottom:-250px;
+
+    background:radial-gradient(circle,
+    rgba(255,255,255,.04),
+    transparent 70%);
+
+    filter:blur(90px);
+
+}
+
+/*====================================
+            Tabs
+====================================*/
+
+.plan-tabs{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:22px;
+
+    margin:70px 0;
+
+    flex-wrap:wrap;
+
+}
+
+.plan-btn{
+
+    padding:18px 42px;
+
+    border-radius:60px;
+
+    border:1px solid rgba(212,175,55,.25);
+
+    background:transparent;
+
+    color:#fff;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    transition:.4s;
+
+    font-weight:500;
+
+}
+
+.plan-btn:hover{
+
+    background:#d4af37;
+
+    color:#000;
+
+    transform:translateY(-4px);
+
+}
+
+.plan-btn.active{
+
+    background:#d4af37;
+
+    color:#000;
+
+}
+
+/*====================================
+        Main Layout
+====================================*/
+
+.floor-layout{
+
+    display:grid;
+
+    grid-template-columns:58% 42%;
+
+    gap:70px;
+
+    align-items:center;
+
+}
+
+/*====================================
+            Image
+====================================*/
+
+.floor-image{
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:28px;
+
+    border:1px solid rgba(212,175,55,.18);
+
+    box-shadow:0 40px 100px rgba(0,0,0,.45);
+
+}
+
+.floor-image img{
+
+    width:100%;
+
+    display:block;
+
+    transition: opacity .35s ease, transform .8s ease;
+
+}
+
+.floor-image:hover img{
+
+    transform:scale(1.05);
+
+}
+
+/* Luxury Shine */
+
+.floor-image::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.10),
+    transparent
+    );
+
+    transform:translateX(-120%);
+
+    transition:1.2s;
+
+}
+
+.floor-image:hover::after{
+
+    transform:translateX(120%);
+
+}
+
+/*====================================
+        Right Panel
+====================================*/
+
+.floor-content{
+
+    padding:20px 0;
+
+}
+
+.plan-subtitle{
+
+    display:block;
+
+    color:#d4af37;
+
+    letter-spacing:4px;
+
+    font-size:13px;
+
+    margin-bottom:20px;
+
+}
+
+.floor-content h2{
+
+    font-size:56px;
+
+    line-height:1.15;
+
+    margin-bottom:25px;
+
+    color:#fff;
+
+}
+
+.floor-content p{
+
+    color:#d8d8d8;
+
+    line-height:1.9;
+
+    font-size:18px;
+
+    margin-bottom:45px;
+
+}
+
+/*====================================
+        Specifications
+====================================*/
+
+.plan-specifications{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+
+    margin-bottom:40px;
+
+}
+
+.spec-card{
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(212,175,55,.12);
+
+    border-radius:18px;
+
+    padding:28px;
+
+    transition:.4s;
+
+}
+
+.spec-card:hover{
+
+    transform:translateY(-8px);
+
+    background:rgba(255,255,255,.07);
+
+}
+
+.spec-card h3{
+
+    font-size:36px;
+
+    color:#d4af37;
+
+    margin-bottom:10px;
+
+}
+
+.spec-card span{
+
+    color:#ccc;
+
+    letter-spacing:2px;
+
+    font-size:13px;
+
+}
+
+/*====================================
+        Features
+====================================*/
+
+.plan-features{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:15px;
+
+    margin-bottom:45px;
+
+    list-style:none;
+
+    padding:0;
+
+}
+
+.plan-features li{
+
+    position:relative;
+
+    padding-left:30px;
+
+    color:#fff;
+
+    line-height:1.8;
+
+}
+
+.plan-features li::before{
+
+    content:"✓";
+
+    position:absolute;
+
+    left:0;
+
+    color:#d4af37;
+
+    font-weight:bold;
+
+}
+
+/*====================================
+        Buttons
+====================================*/
+
+.plan-buttons{
+
+    display:flex;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+.btn-secondary{
+
+    padding:18px 38px;
+
+    border:1px solid #d4af37;
+
+    border-radius:60px;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    transition:.4s;
+
+}
+
+.btn-secondary:hover{
+
+    background:#d4af37;
+
+    color:#000;
+
+}
+
+/*====================================
+        Responsive
+====================================*/
+
+@media(max-width:1100px){
+
+.floor-layout{
+
+grid-template-columns:1fr;
+
+}
+
+.floor-content{
+
+padding-top:20px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.floor-plans{
+
+padding:90px 0;
+
+}
+
+.floor-content h2{
+
+font-size:40px;
+
+}
+
+.plan-specifications{
+
+grid-template-columns:1fr;
+
+}
+
+.plan-features{
+
+grid-template-columns:1fr;
+
+}
+
+.plan-btn{
+
+padding:15px 28px;
+
+font-size:16px;
+
+}
+
+}
+/*==================================================
+        LOCATION & CONNECTIVITY V2
+==================================================*/
+
+.location-section{
+
+    padding:140px 0;
+
+    background:linear-gradient(180deg,#050816,#08111d);
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+/* Decorative Glow */
+
+.location-section::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:700px;
+
+    height:700px;
+
+    top:-250px;
+
+    left:-250px;
+
+    background:radial-gradient(circle,
+    rgba(212,175,55,.08),
+    transparent 70%);
+
+    filter:blur(100px);
+
+}
+
+.location-section::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:600px;
+
+    height:600px;
+
+    right:-250px;
+
+    bottom:-250px;
+
+    background:radial-gradient(circle,
+    rgba(255,255,255,.04),
+    transparent 70%);
+
+    filter:blur(90px);
+
+}
+
+/*=========================================
+        MAIN GRID
+=========================================*/
+
+.location-grid{
+
+    display:grid;
+
+    grid-template-columns:55% 45%;
+
+    gap:70px;
+
+    margin-top:70px;
+
+    align-items:center;
+
+}
+
+/*=========================================
+        MAP IMAGE
+=========================================*/
+
+.location-image{
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:30px;
+
+    border:1px solid rgba(212,175,55,.18);
+
+    box-shadow:0 35px 90px rgba(0,0,0,.45);
+
+}
+
+.location-image img{
+
+    width:100%;
+
+    display:block;
+
+    transition:1s;
+
+}
+
+.location-image:hover img{
+
+    transform:scale(1.05);
+
+}
+
+.location-image::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+    180deg,
+
+    rgba(0,0,0,.05),
+
+    rgba(0,0,0,.18),
+
+    rgba(0,0,0,.45)
+
+    );
+
+}
+
+/*=========================================
+        RIGHT CONTENT
+=========================================*/
+
+.location-content{
+
+    position:relative;
+
+}
+
+.location-subtitle{
+
+    display:block;
+
+    color:#d4af37;
+
+    letter-spacing:4px;
+
+    font-size:13px;
+
+    margin-bottom:18px;
+
+}
+
+.location-content h3{
+
+    font-size:48px;
+
+    line-height:1.2;
+
+    margin-bottom:45px;
+
+    color:#fff;
+
+}
+
+/*=========================================
+        TIMELINE
+=========================================*/
+
+.location-timeline{
+
+    position:relative;
+
+    padding-left:35px;
+
+    margin-bottom:50px;
+
+}
+
+.location-timeline::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:28px;
+
+    top:0;
+
+    bottom:0;
+
+    width:2px;
+
+    background:linear-gradient(
+
+    #d4af37,
+
+    rgba(212,175,55,.25)
+
+    );
+
+}
+
+/*=========================================
+        ITEM
+=========================================*/
+
+.timeline-item{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:22px;
+
+    margin-bottom:30px;
+
+}
+
+.timeline-item:last-child{
+
+    margin-bottom:0;
+
+}
+
+/*=========================================
+        ICON
+=========================================*/
+
+.timeline-icon{
+
+    width:72px;
+
+    height:72px;
+
+    min-width:72px;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    border:2px solid #d4af37;
+
+    background:#111;
+
+    position:relative;
+
+    z-index:2;
+
+    box-shadow:0 0 25px rgba(212,175,55,.15);
+
+}
+
+.timeline-icon img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.5s;
+
+}
+
+.timeline-item:hover .timeline-icon img{
+
+    transform:scale(1.12);
+
+}
+
+/*=========================================
+        TEXT
+=========================================*/
+
+.timeline-text{
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(212,175,55,.12);
+
+    padding:18px 22px;
+
+    border-radius:18px;
+
+    flex:1;
+
+    transition:.35s;
+
+}
+
+.timeline-item:hover .timeline-text{
+
+    transform:translateX(10px);
+
+    background:rgba(255,255,255,.07);
+
+}
+
+.timeline-text h4{
+
+    color:#fff;
+
+    font-size:22px;
+
+    margin-bottom:8px;
+
+}
+
+.timeline-text span{
+
+    color:#d4af37;
+
+    font-size:14px;
+
+    letter-spacing:2px;
+
+}
+
+/*=========================================
+        BUTTONS
+=========================================*/
+
+.location-buttons{
+
+    display:flex;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+/*=========================================
+        RESPONSIVE
+=========================================*/
+
+@media(max-width:1100px){
+
+.location-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.location-content{
+
+margin-top:20px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.location-section{
+
+padding:90px 0;
+
+}
+
+.location-content h3{
+
+font-size:36px;
+
+}
+
+.timeline-item{
+
+gap:15px;
+
+}
+
+.timeline-icon{
+
+width:60px;
+
+height:60px;
+
+min-width:60px;
+
+}
+
+.timeline-text{
+
+padding:16px;
+
+}
+
+.timeline-text h4{
+
+font-size:18px;
+
+}
+
+.location-buttons{
+
+flex-direction:column;
+
+}
+
+.location-buttons a{
+
+width:100%;
+
+text-align:center;
+
+}
+
+}
+/*==================================================
+        INVESTMENT HIGHLIGHTS
+==================================================*/
+
+.investment-section{
+
+    padding:140px 0;
+
+    background:linear-gradient(180deg,#08111d,#050816);
+
+}
+
+.investment-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:30px;
+
+    margin-top:70px;
+
+}
+
+.investment-card{
+
+    position:relative;
+
+    padding:45px 35px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(212,175,55,.15);
+
+    border-radius:24px;
+
+    backdrop-filter:blur(16px);
+
+    transition:.4s;
+
+}
+
+.investment-card:hover{
+
+    transform:translateY(-10px);
+
+    border-color:#d4af37;
+
+    box-shadow:0 25px 60px rgba(212,175,55,.15);
+
+}
+
+.investment-number{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:50%;
+
+    background:#d4af37;
+
+    color:#000;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    margin-bottom:25px;
+
+}
+
+.investment-card h3{
+
+    color:#fff;
+
+    font-size:28px;
+
+    margin-bottom:18px;
+
+}
+
+.investment-card p{
+
+    color:#cfcfcf;
+
+    line-height:1.9;
+
+    margin:0;
+
+}
+
+@media(max-width:1100px){
+
+.investment-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.investment-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.investment-section{
+
+padding:90px 0;
+
+}
+
+}
+/*==================================================
+            CONTACT CTA
+==================================================*/
+
+.contact-cta{
+
+padding:160px 0;
+
+background:url("./images/contact/contact-bg.webp") center/cover;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.cta-overlay{
+
+position:absolute;
+
+inset:0;
+
+background:linear-gradient(
+
+180deg,
+
+rgba(0,0,0,.65),
+
+rgba(0,0,0,.82)
+
+);
+
+}
+
+.cta-content{
+
+position:relative;
+
+z-index:2;
+
+max-width:850px;
+
+margin:auto;
+
+text-align:center;
+
+}
+
+.cta-content span{
+
+display:block;
+
+color:#d4af37;
+
+letter-spacing:5px;
+
+margin-bottom:20px;
+
+font-size:13px;
+
+}
+
+.cta-content h2{
+
+font-size:64px;
+
+line-height:1.15;
+
+margin-bottom:25px;
+
+}
+
+.cta-content p{
+
+font-size:19px;
+
+line-height:1.9;
+
+color:#ddd;
+
+margin-bottom:60px;
+
+}
+
+.contact-info{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:30px;
+
+margin-bottom:50px;
+
+}
+
+.contact-box{
+
+padding:35px;
+
+background:rgba(255,255,255,.06);
+
+border:1px solid rgba(212,175,55,.18);
+
+backdrop-filter:blur(10px);
+-webkit-backdrop-filter:blur(10px);
+
+border-radius:24px;
+
+}
+
+.contact-box h4{
+
+color:#d4af37;
+
+margin-bottom:15px;
+
+}
+
+.contact-box a{
+
+font-size:28px;
+
+font-weight:600;
+
+color:#fff;
+
+text-decoration:none;
+
+}
+
+.contact-box p{
+
+margin:0;
+
+font-size:17px;
+
+line-height:1.8;
+
+}
+
+.cta-buttons{
+
+display:flex;
+
+justify-content:center;
+
+gap:25px;
+
+flex-wrap:wrap;
+
+}
+
+@media(max-width:992px){
+
+.contact-info{
+
+grid-template-columns:1fr;
+
+}
+
+.cta-content h2{
+
+font-size:42px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.contact-cta{
+
+padding:100px 0;
+
+}
+
+.cta-content h2{
+
+font-size:34px;
+
+}
+
+}
+/*==================================================
+            ULTRA LUXURY FOOTER
+==================================================*/
+
+.luxury-footer{
+
+padding:100px 0 40px;
+
+background:#04070d;
+
+border-top:1px solid rgba(212,175,55,.12);
+
+}
+
+.footer-grid{
+
+display:grid;
+
+grid-template-columns:2fr 1fr 1.3fr 1.2fr;
+
+gap:60px;
+
+margin-bottom:70px;
+
+}
+
+.footer-logo{
+
+width:170px;
+
+margin-bottom:25px;
+
+}
+
+.footer-column p{
+
+color:#bdbdbd;
+
+line-height:1.9;
+
+margin-bottom:15px;
+
+}
+
+.footer-column h3{
+
+color:#fff;
+
+margin-bottom:25px;
+
+font-size:24px;
+
+position:relative;
+
+padding-bottom:12px;
+
+}
+
+.footer-column h3::after{
+
+content:"";
+
+position:absolute;
+
+left:0;
+
+bottom:0;
+
+width:50px;
+
+height:2px;
+
+background:#d4af37;
+
+}
+
+.footer-column ul{
+
+list-style:none;
+
+padding:0;
+
+margin:0;
+
+}
+
+.footer-column li{
+
+margin-bottom:16px;
+
+}
+
+.footer-column a{
+
+text-decoration:none;
+
+color:#bdbdbd;
+
+transition:.35s;
+
+}
+
+.footer-column a:hover{
+
+color:#d4af37;
+
+padding-left:8px;
+
+}
+
+.footer-divider{
+
+height:1px;
+
+background:linear-gradient(
+
+90deg,
+
+transparent,
+
+#d4af37,
+
+transparent
+
+);
+
+margin-bottom:30px;
+
+}
+
+.footer-bottom{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
+
+}
+
+.footer-bottom p{
+
+color:#8c8c8c;
+
+margin:0;
+
+}
+
+.footer-bottom strong{
+
+color:#d4af37;
+
+font-weight:500;
+
+}
+
+/*=====================================
+        Responsive
+=====================================*/
+
+@media(max-width:1100px){
+
+.footer-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.footer-grid{
+
+grid-template-columns:1fr;
+
+gap:45px;
+
+}
+
+.footer-logo{
+
+width:150px;
+
+}
+
+.footer-column h3{
+
+font-size:22px;
+
+}
+
+}
+/*=========================================
+        FLOATING WHATSAPP
+==========================================*/
+
+.whatsapp-btn{
+
+    position:fixed;
+
+    width:65px;
+
+    height:65px;
+
+    right:25px;
+
+    bottom:25px;
+
+    z-index:9999;
+
+    transition:.3s;
+
+}
+
+.whatsapp-btn img{
+
+    width:100%;
+
+    height:100%;
+
+}
+
+.whatsapp-btn:hover{
+
+    transform:scale(1.1);
+
+}
+/*=========================================
+        FLOATING CALL BUTTON
+==========================================*/
+
+.call-btn{
+
+    position:fixed;
+
+    width:65px;
+
+    height:65px;
+
+    right:25px;
+
+    bottom:100px;
+
+    background:#d4af37;
+
+    color:#000;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:28px;
+
+    text-decoration:none;
+
+    z-index:9999;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.30);
+
+    transition:.3s;
+
+}
+
+.call-btn:hover{
+
+    transform:scale(1.1);
+
+    background:#ffffff;
+
+}
+/*==================================================
+            LUXURY PRELOADER
+==================================================*/
+
+#preloader{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#050b17;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:999999;
+
+    transition:opacity .8s ease,
+               visibility .8s ease;
+
+}
+
+#preloader.hide{
+
+    opacity:0;
+
+    visibility:hidden;
+
+}
+
+.loader-wrapper{
+
+    text-align:center;
+
+}
+
+.loader-logo{
+
+    width:180px;
+
+    margin-bottom:35px;
+
+    animation:logoFloat 2.5s ease-in-out infinite;
+
+}
+
+.loader-line{
+
+    width:220px;
+
+    height:2px;
+
+    margin:auto;
+
+    overflow:hidden;
+
+    position:relative;
+
+    background:rgba(255,255,255,.08);
+
+}
+
+.loader-line::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-100%;
+
+    width:100%;
+
+    height:100%;
+
+    background:#d4af37;
+
+    animation:loading 1.6s linear infinite;
+
+}
+
+.loader-wrapper p{
+
+    margin-top:20px;
+
+    color:#d4af37;
+
+    letter-spacing:6px;
+
+    font-size:13px;
+
+    text-transform:uppercase;
+
+}
+
+@keyframes loading{
+
+0%{
+
+left:-100%;
+
+}
+
+100%{
+
+left:100%;
+
+}
+
+}
+
+@keyframes logoFloat{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-8px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+/*=========================================
+        SUCCESS POPUP
+=========================================*/
+
+.success-popup{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.75);
+
+    backdrop-filter:blur(8px);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.4s;
+
+    z-index:99999;
+
+}
+
+.success-popup.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+.success-box{
+
+    width:420px;
+
+    max-width:92%;
+
+    background:#0c1322;
+
+    border:1px solid rgba(212,175,55,.25);
+
+    border-radius:22px;
+
+    padding:45px;
+
+    text-align:center;
+
+    box-shadow:0 30px 80px rgba(0,0,0,.45);
+
+}
+
+.success-icon{
+
+    font-size:70px;
+
+    color:#d4af37;
+
+    margin-bottom:20px;
+
+    text-shadow:
+
+    0 0 20px rgba(212,175,55,.55),
+
+    0 0 40px rgba(212,175,55,.35);
+
+}
+
+.success-box h2{
+
+    color:#fff;
+
+    margin-bottom:15px;
+
+}
+
+.success-box p{
+
+    color:#d6d6d6;
+
+    line-height:1.8;
+
+}
+
+.small-text{
+
+    font-size:15px;
+
+    opacity:.85;
+
+    margin-top:10px;
+
+}
+
+.success-box button{
+
+    margin-top:30px;
+
+    width:100%;
+
+    border:none;
+
+    cursor:pointer;
+
+    padding:16px;
+
+    border-radius:50px;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    background:linear-gradient(135deg,#d4af37,#b88925);
+
+    color:#000;
+
+    transition:.35s;
+
+}
+
+.success-box button:hover{
+
+    transform:translateY(-4px) scale(1.02);
+
+    box-shadow:
+
+    0 20px 40px rgba(212,175,55,.35);
+
+}
+.success-box{
+
+    width:420px;
+
+    max-width:92%;
+
+    background:#0c1322;
+
+    border:1px solid rgba(212,175,55,.25);
+
+    border-radius:22px;
+
+    padding:45px;
+
+    text-align:center;
+
+    box-shadow:0 30px 80px rgba(0,0,0,.45);
+
+    transform:scale(.85);
+
+    transition:
+
+transform .35s ease,
+
+box-shadow .35s ease,
+
+border-color .35s ease;
+
+}
+.success-popup.show .success-box{
+
+    transform:scale(1);
+
+}
+
+/*==================================================
+        MOBILE HERO V2
+==================================================*/
+
+@media (max-width:768px){
+
+.hero{
+
+    min-height:auto;
+
+    padding:105px 0 50px;
+
+}
+
+.hero-container{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:28px;
+
+}
+
+.hero-left{
+
+    order:1;
+
+}
+
+.hero-right{
+
+    order:2;
+
+    width:100%;
+
+}
+
+.hero-badge{
+
+    font-size:11px;
+
+    padding:10px 18px;
+
+    letter-spacing:2px;
+
+    margin-bottom:18px;
+
+}
+
+.hero-title{
+
+    font-size:clamp(52px,14vw,72px);
+
+    line-height:.92;
+
+    margin-bottom:10px;
+
+}
+
+.hero-subtitle{
+
+    font-size:clamp(28px,8vw,40px);
+
+    line-height:1.15;
+
+    margin-bottom:18px;
+
+}
+
+.hero-description{
+
+    font-size:16px;
+
+    line-height:1.7;
+
+    margin-bottom:20px;
+
+}
+
+.hero-price{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:18px;
+
+    margin-bottom:24px;
+
+}
+
+.hero-price h3{
+
+    font-size:28px;
+
+}
+
+.hero-price h4{
+
+    font-size:24px;
+
+}
+
+.hero-buttons{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.hero-buttons a{
+
+    width:100%;
+
+    justify-content:center;
+
+}
+
+.lead-card{
+
+    width:100%;
+
+    padding:24px;
+
+    border-radius:18px;
+
+}
+
+.lead-card h3{
+
+    font-size:30px;
+
+}
+
+.lead-card p{
+
+    font-size:15px;
+
+    margin-bottom:20px;
+
+}
+
+#leadForm{
+
+    gap:14px;
+
+}
+
+.lead-card input,
+.lead-card select,
+.lead-card textarea{
+
+    padding:15px;
+
+    font-size:15px;
+
+}
+
+.call-btn{
+
+    width:58px;
+
+    height:58px;
+
+    right:16px;
+
+    bottom:95px;
+
+}
+
+.whatsapp-btn{
+
+    width:58px;
+
+    height:58px;
+
+    right:16px;
+
+    bottom:25px;
+
+}
+
+.scroll-indicator{
+
+    display:none;
+
+}
+
+}
+/* =========================================================
+   CRC THE PERIDONA
+   VERSION 2.1 — MOBILE HERO FIX
+   Desktop design remains unchanged
+========================================================= */
+
+@media (max-width: 991px) {
+
+    /* -----------------------------------------
+       HERO MAIN
+    ----------------------------------------- */
+
+    .hero {
+        width: 100%;
+        min-height: auto;
+        height: auto;
+
+        padding-top: 110px;
+        padding-bottom: 45px;
+
+        display: block;
+
+        overflow: hidden;
+        position: relative;
+
+        /* Mobile background positioning */
+        background-position: 62% center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+
+    /* -----------------------------------------
+       HERO CONTAINER
+    ----------------------------------------- */
+
+    .hero-container {
+        width: 100%;
+        max-width: 100%;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 35px;
+
+        padding-left: 22px;
+        padding-right: 22px;
+
+        margin: 0 auto;
+
+        box-sizing: border-box;
+    }
+
+
+    /* -----------------------------------------
+       HERO LEFT CONTENT
+    ----------------------------------------- */
+
+    .hero-left {
+        width: 100%;
+        max-width: 100%;
+
+        box-sizing: border-box;
+
+        overflow: hidden;
+    }
+
+
+    /* -----------------------------------------
+       BADGE
+    ----------------------------------------- */
+
+    .hero-badge {
+        display: inline-block;
+
+        padding: 9px 18px;
+
+        margin-bottom: 22px;
+
+        font-size: 10px;
+        letter-spacing: 2.5px;
+
+        white-space: nowrap;
+    }
+
+
+    /* -----------------------------------------
+       THE PERIDONA
+       IMPORTANT: PREVENT RIGHT-SIDE CUT
+    ----------------------------------------- */
+
+    .hero-title {
+        width: 100%;
+        max-width: 100%;
+
+        margin: 0 0 18px 0;
+
+        font-size: clamp(52px, 15vw, 82px);
+        line-height: 0.88;
+
+        letter-spacing: -2px;
+
+        word-break: normal;
+        overflow-wrap: normal;
+
+        white-space: normal;
+
+        box-sizing: border-box;
+    }
+
+
+    /* -----------------------------------------
+       SUBTITLE
+    ----------------------------------------- */
+
+    .hero-subtitle {
+        width: 100%;
+        max-width: 100%;
+
+        margin: 0 0 20px 0;
+
+        font-size: clamp(34px, 9vw, 52px);
+        line-height: 1.05;
+
+        letter-spacing: -1px;
+
+        overflow-wrap: break-word;
+    }
+
+
+    /* -----------------------------------------
+       DESCRIPTION
+    ----------------------------------------- */
+
+    .hero-description {
+        width: 100%;
+        max-width: 100%;
+
+        margin-bottom: 25px;
+
+        font-size: 16px;
+        line-height: 1.65;
+
+        overflow-wrap: break-word;
+    }
+
+
+    /* -----------------------------------------
+       PRICE / SIZE
+    ----------------------------------------- */
+
+    .hero-price {
+        width: 100%;
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 18px;
+
+        margin-bottom: 25px;
+    }
+
+
+    .hero-price span {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+    }
+
+
+    .hero-price h3,
+    .hero-price h4 {
+        margin-top: 6px;
+
+        font-size: 27px;
+        line-height: 1.15;
+    }
+
+
+    /* -----------------------------------------
+       HERO BUTTONS
+    ----------------------------------------- */
+
+    .hero-buttons {
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 12px;
+
+        margin-top: 10px;
+    }
+
+
+    .hero-buttons a {
+        width: 100%;
+
+        text-align: center;
+
+        box-sizing: border-box;
+    }
+
+
+    /* -----------------------------------------
+       RIGHT / LEAD FORM
+    ----------------------------------------- */
+
+    .hero-right {
+        width: 100%;
+        max-width: 100%;
+
+        box-sizing: border-box;
+
+        margin: 0;
+    }
+
+
+    .lead-card {
+        width: 100%;
+        max-width: 100%;
+
+        padding: 28px 20px;
+
+        border-radius: 18px;
+
+        box-sizing: border-box;
+
+        overflow: hidden;
+    }
+
+
+    .lead-card h3 {
+        width: 100%;
+
+        font-size: 32px;
+        line-height: 1.12;
+
+        margin-bottom: 12px;
+
+        overflow-wrap: break-word;
+    }
+
+
+    .lead-card p {
+        font-size: 15px;
+        line-height: 1.5;
+
+        margin-bottom: 22px;
+    }
+
+
+    /* -----------------------------------------
+       FORM
+    ----------------------------------------- */
+
+    #leadForm {
+        width: 100%;
+
+        gap: 13px;
+    }
+
+
+    .lead-card input,
+    .lead-card select,
+    .lead-card textarea {
+        width: 100%;
+
+        max-width: 100%;
+
+        padding: 15px;
+
+        font-size: 15px;
+
+        box-sizing: border-box;
+    }
+
+
+    .lead-card textarea {
+        min-height: 110px;
+    }
+
+
+    .lead-card button {
+        width: 100%;
+
+        padding: 16px;
+
+        font-size: 16px;
+
+        box-sizing: border-box;
+    }
+
+
+    /* -----------------------------------------
+       PRIVACY TEXT
+    ----------------------------------------- */
+
+    .privacy-text {
+        width: 100%;
+
+        font-size: 12px;
+        line-height: 1.5;
+
+        align-items: flex-start;
+
+        box-sizing: border-box;
+    }
+
+
+    /* -----------------------------------------
+       REMOVE HERO PARTICLE EFFECT ON MOBILE
+       Improves readability + performance
+    ----------------------------------------- */
+
+    .hero::after {
+        display: none;
+    }
+
+
+    /* -----------------------------------------
+       REDUCE GOLD GLOW
+    ----------------------------------------- */
+
+    .hero::before {
+        width: 450px;
+        height: 450px;
+
+        right: -220px;
+        top: 100px;
+
+        filter: blur(70px);
+
+        opacity: .55;
+    }
+
+
+    /* -----------------------------------------
+       PREVENT HORIZONTAL OVERFLOW
+    ----------------------------------------- */
+
+    .hero,
+    .hero-container,
+    .hero-left,
+    .hero-right,
+    .lead-card {
+        overflow-x: hidden;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE DEVICES
+   600px AND BELOW
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .hero {
+        padding-top: 95px;
+        padding-bottom: 35px;
+
+        /* Better crop for portrait screens */
+        background-position: 60% center;
+    }
+
+
+    .hero-container {
+        padding-left: 18px;
+        padding-right: 18px;
+
+        gap: 28px;
+    }
+
+
+    /* Badge */
+
+    .hero-badge {
+        padding: 8px 16px;
+
+        font-size: 9px;
+        letter-spacing: 2px;
+
+        margin-bottom: 18px;
+    }
+
+
+    /* THE PERIDONA */
+
+    .hero-title {
+        font-size: clamp(48px, 14vw, 68px);
+
+        line-height: .88;
+
+        letter-spacing: -1.5px;
+
+        margin-bottom: 16px;
+    }
+
+
+    /* Crafted For The Exceptional */
+
+    .hero-subtitle {
+        font-size: clamp(30px, 8.5vw, 44px);
+
+        line-height: 1.08;
+
+        margin-bottom: 18px;
+    }
+
+
+    /* Description */
+
+    .hero-description {
+        font-size: 15px;
+
+        line-height: 1.6;
+
+        margin-bottom: 22px;
+    }
+
+
+    /* Price */
+
+    .hero-price {
+        gap: 15px;
+
+        margin-bottom: 22px;
+    }
+
+
+    .hero-price h3,
+    .hero-price h4 {
+        font-size: 25px;
+    }
+
+
+    /* Form */
+
+    .lead-card {
+        padding: 24px 16px;
+
+        border-radius: 16px;
+    }
+
+
+    .lead-card h3 {
+        font-size: 29px;
+
+        line-height: 1.12;
+    }
+
+
+    .lead-card p {
+        font-size: 14px;
+    }
+
+
+    .lead-card input,
+    .lead-card select,
+    .lead-card textarea {
+        padding: 14px;
+
+        font-size: 14px;
+    }
+
+
+    .lead-card textarea {
+        min-height: 100px;
+    }
+
+
+    .lead-card button {
+        padding: 15px;
+
+        font-size: 16px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   390px AND BELOW
+========================================================= */
+
+@media (max-width: 390px) {
+
+    .hero {
+        padding-top: 90px;
+    }
+
+
+    .hero-container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+
+    .hero-title {
+        font-size: 46px;
+
+        letter-spacing: -1px;
+    }
+
+
+    .hero-subtitle {
+        font-size: 29px;
+    }
+
+
+    .hero-description {
+        font-size: 14px;
+    }
+
+
+    .lead-card {
+        padding: 22px 14px;
+    }
+
+
+    .lead-card h3 {
+        font-size: 26px;
+    }
+
+}
+
+
+/* =========================================================
+   GLOBAL MOBILE SAFETY
+   Only prevents horizontal page overflow
+========================================================= */
+
+@media (max-width: 991px) {
+
+    html,
+    body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+}
+/* =========================================================
+   CRC THE PERIDONA
+   MOBILE HERO FIX — VERSION 2.3
+   Only Hero + Hero Strip
+========================================================= */
+
+@media (max-width: 767px) {
+
+    /* -----------------------------------------
+       GLOBAL MOBILE SAFETY
+    ----------------------------------------- */
+
+    html,
+    body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .hero,
+    .hero-container,
+    .hero-left,
+    .hero-right {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+
+    /* -----------------------------------------
+       HERO SECTION
+    ----------------------------------------- */
+
+    .hero {
+        min-height: auto;
+        height: auto;
+
+        padding-top: 105px;
+        padding-bottom: 35px;
+
+        display: block;
+
+        position: relative;
+        overflow: hidden;
+    }
+
+
+    /* -----------------------------------------
+       HERO BACKGROUND IMAGE
+    ----------------------------------------- */
+
+    .hero::before {
+        display: none;
+    }
+
+    .hero::after {
+        display: none;
+    }
+
+    .hero-overlay {
+        position: absolute;
+        inset: 0;
+
+        background:
+            linear-gradient(
+                180deg,
+                rgba(5, 8, 16, .78) 0%,
+                rgba(5, 8, 16, .48) 30%,
+                rgba(5, 8, 16, .70) 65%,
+                rgba(5, 8, 16, .94) 100%
+            );
+
+        z-index: -1;
+    }
+
+
+    /* -----------------------------------------
+       HERO BACKGROUND IMAGE
+       If you are using background-image
+    ----------------------------------------- */
+
+    .hero {
+        background-position: 62% center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+
+    /* -----------------------------------------
+       HERO CONTAINER
+    ----------------------------------------- */
+
+    .hero-container {
+
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+        max-width: 100%;
+
+        padding-left: 20px;
+        padding-right: 20px;
+
+        margin: 0;
+
+        gap: 35px;
+
+        box-sizing: border-box;
+    }
+
+
+    /* -----------------------------------------
+       LEFT CONTENT
+    ----------------------------------------- */
+
+    .hero-left {
+
+        width: 100%;
+        max-width: 100%;
+
+        padding: 0;
+
+        box-sizing: border-box;
+    }
+
+
+    /* -----------------------------------------
+       BADGE
+    ----------------------------------------- */
+
+    .hero-badge {
+
+        font-size: 10px;
+
+        letter-spacing: 2.5px;
+
+        padding: 10px 18px;
+
+        margin-bottom: 22px;
+
+        white-space: nowrap;
+
+        max-width: max-content;
+    }
+
+
+    /* -----------------------------------------
+       THE PERIDONA
+    ----------------------------------------- */
+
+    .hero-title {
+
+        font-size: clamp(54px, 15vw, 72px);
+
+        line-height: .88;
+
+        letter-spacing: -2px;
+
+        margin: 0 0 20px 0;
+
+        max-width: 100%;
+
+        word-break: normal;
+
+        overflow-wrap: normal;
+    }
+
+
+    /* -----------------------------------------
+       SUBTITLE
+    ----------------------------------------- */
+
+    .hero-subtitle {
+
+        font-size: clamp(32px, 9vw, 44px);
+
+        line-height: 1.05;
+
+        margin: 0 0 22px 0;
+
+        max-width: 100%;
+    }
+
+
+    /* -----------------------------------------
+       DESCRIPTION
+    ----------------------------------------- */
+
+    .hero-description {
+
+        font-size: 16px;
+
+        line-height: 1.65;
+
+        max-width: 100%;
+
+        margin: 0 0 28px 0;
+    }
+
+
+    /* -----------------------------------------
+       PRICE AREA
+    ----------------------------------------- */
+
+    .hero-price {
+
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        width: 100%;
+
+        gap: 15px;
+
+        margin: 0 0 28px 0;
+
+        box-sizing: border-box;
+    }
+
+    .hero-price > div {
+
+        min-width: 0;
+
+        text-align: left;
+    }
+
+    .hero-price span {
+
+        display: block;
+
+        font-size: 10px;
+
+        line-height: 1.3;
+
+        letter-spacing: 1.8px;
+
+        margin-bottom: 7px;
+    }
+
+    .hero-price h3,
+    .hero-price h4 {
+
+        font-size: clamp(24px, 7vw, 32px);
+
+        line-height: 1.1;
+
+        margin: 0;
+
+        white-space: nowrap;
+    }
+
+
+    /* -----------------------------------------
+       BUTTONS
+    ----------------------------------------- */
+
+    .hero-buttons {
+
+        display: flex;
+
+        flex-direction: column;
+
+        width: 100%;
+
+        gap: 12px;
+
+        margin: 0;
+    }
+
+    .hero-buttons a {
+
+        width: 100%;
+
+        box-sizing: border-box;
+
+        text-align: center;
+
+        padding: 16px 20px;
+
+        font-size: 16px;
+    }
+
+
+    /* -----------------------------------------
+       RIGHT / LEAD FORM
+    ----------------------------------------- */
+
+    .hero-right {
+
+        width: 100%;
+        max-width: 100%;
+
+        margin: 0;
+
+        padding: 0;
+
+        box-sizing: border-box;
+    }
+
+
+    .lead-card {
+
+        width: 100%;
+
+        max-width: 100%;
+
+        box-sizing: border-box;
+
+        padding: 28px 18px;
+
+        border-radius: 20px;
+
+        margin: 0;
+    }
+
+
+    .lead-card h3 {
+
+        font-size: clamp(30px, 8vw, 38px);
+
+        line-height: 1.12;
+
+        margin-bottom: 12px;
+
+        max-width: 100%;
+
+        overflow-wrap: break-word;
+    }
+
+
+    .lead-card p {
+
+        font-size: 15px;
+
+        line-height: 1.5;
+
+        margin-bottom: 22px;
+
+        max-width: 100%;
+    }
+
+
+    /* -----------------------------------------
+       FORM
+    ----------------------------------------- */
+
+    #leadForm {
+
+        width: 100%;
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 13px;
+
+        box-sizing: border-box;
+    }
+
+
+    .lead-card input,
+    .lead-card select,
+    .lead-card textarea {
+
+        width: 100%;
+
+        max-width: 100%;
+
+        box-sizing: border-box;
+
+        padding: 15px;
+
+        font-size: 15px;
+
+        border-radius: 12px;
+    }
+
+
+    .lead-card textarea {
+
+        min-height: 110px;
+    }
+
+
+    .lead-card button {
+
+        width: 100%;
+
+        box-sizing: border-box;
+
+        padding: 16px;
+
+        font-size: 16px;
+    }
+
+
+    .privacy-text {
+
+        font-size: 12px;
+
+        line-height: 1.5;
+
+        margin-top: 15px;
+
+        align-items: flex-start;
+    }
+
+
+    /* -----------------------------------------
+       HERO STRIP
+       7 / 341 / 18 / 2030
+    ----------------------------------------- */
+
+    .hero-strip {
+
+        width: 100%;
+
+        max-width: 100%;
+
+        box-sizing: border-box;
+
+        display: grid;
+
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 0;
+
+        margin: 0;
+
+        padding: 25px 12px;
+
+        border-radius: 20px;
+
+        overflow: hidden;
+    }
+
+
+    .strip-box {
+
+        min-width: 0;
+
+        width: 100%;
+
+        box-sizing: border-box;
+
+        text-align: center;
+
+        padding: 12px 5px;
+    }
+
+
+    .strip-box h2 {
+
+        font-size: clamp(38px, 12vw, 55px);
+
+        line-height: 1;
+
+        margin: 0 0 7px;
+    }
+
+
+    .strip-box span {
+
+        display: block;
+
+        font-size: 9px;
+
+        letter-spacing: 2px;
+
+        line-height: 1.3;
+
+        white-space: nowrap;
+    }
+
+
+    .strip-box p {
+
+        font-size: 13px;
+
+        line-height: 1.3;
+
+        margin: 7px 0 0;
+
+        white-space: normal;
+    }
+
+
+    .strip-line {
+
+        display: none;
+    }
+
+
+    /* -----------------------------------------
+       FLOATING CALL + WHATSAPP
+    ----------------------------------------- */
+
+    .floating-call,
+    .floating-whatsapp {
+
+        z-index: 9999;
+
+        transform: scale(.82);
+
+        transform-origin: bottom right;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   360px – 390px
+========================================================= */
+
+@media (max-width: 390px) {
+
+    .hero {
+        padding-top: 100px;
+        padding-bottom: 28px;
+    }
+
+    .hero-container {
+        padding-left: 16px;
+        padding-right: 16px;
+        gap: 28px;
+    }
+
+    .hero-title {
+        font-size: 54px;
+    }
+
+    .hero-subtitle {
+        font-size: 31px;
+    }
+
+    .hero-description {
+        font-size: 15px;
+    }
+
+    .hero-price {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .hero-price h3,
+    .hero-price h4 {
+        font-size: 28px;
+    }
+
+    .lead-card {
+        padding: 25px 16px;
+    }
+
+    .lead-card h3 {
+        font-size: 29px;
+    }
+
+    .hero-strip {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .strip-box h2 {
+        font-size: 40px;
+    }
+
+    .strip-box p {
+        font-size: 12px;
+    }
+
+}
+/* =========================================================
+   CRC PERIDONA
+   MOBILE HERO FINAL FIX – V2.3
+   Desktop Design Unchanged
+========================================================= */
+
+@media (max-width: 767px) {
+
+    /* -----------------------------------------
+       HERO MAIN
+    ----------------------------------------- */
+
+    .hero {
+        min-height: auto;
+        height: auto;
+        padding-top: 90px;
+        padding-bottom: 35px;
+        display: block;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* -----------------------------------------
+       MOBILE HERO BACKGROUND
+    ----------------------------------------- */
+
+    .hero::before {
+        width: 420px;
+        height: 420px;
+        right: -180px;
+        top: 180px;
+        opacity: .35;
+        filter: blur(70px);
+    }
+
+    .hero::after {
+        opacity: .06;
+    }
+
+    /* Background image */
+    .hero {
+        background-position: 62% center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    /* -----------------------------------------
+       HERO CONTAINER
+    ----------------------------------------- */
+
+    .hero-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+        gap: 35px;
+        padding: 0 18px;
+        box-sizing: border-box;
+    }
+
+    /* -----------------------------------------
+       LEFT CONTENT
+    ----------------------------------------- */
+
+    .hero-left {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* -----------------------------------------
+       BADGE
+    ----------------------------------------- */
+
+    .hero-badge {
+        font-size: 10px;
+        letter-spacing: 2.5px;
+        padding: 10px 18px;
+        margin-bottom: 20px;
+        max-width: fit-content;
+    }
+
+    /* -----------------------------------------
+       THE PERIDONA
+    ----------------------------------------- */
+
+    .hero-title {
+        font-size: clamp(48px, 14vw, 68px);
+        line-height: .86;
+        letter-spacing: -2px;
+        margin-bottom: 18px;
+        max-width: 100%;
+        word-break: normal;
+        overflow-wrap: normal;
+    }
+
+    /* -----------------------------------------
+       SUBTITLE
+    ----------------------------------------- */
+
+    .hero-subtitle {
+        font-size: clamp(34px, 9vw, 46px);
+        line-height: 1.02;
+        margin-bottom: 20px;
+        max-width: 100%;
+    }
+
+    /* -----------------------------------------
+       DESCRIPTION
+    ----------------------------------------- */
+
+    .hero-description {
+        font-size: 15px;
+        line-height: 1.65;
+        max-width: 100%;
+        margin-bottom: 25px;
+    }
+
+    /* -----------------------------------------
+       PRICE + SIZE
+    ----------------------------------------- */
+
+    .hero-price {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin-bottom: 25px;
+    }
+
+    .hero-price span {
+        display: block;
+        font-size: 10px;
+        letter-spacing: 2px;
+        margin-bottom: 5px;
+    }
+
+    .hero-price h3,
+    .hero-price h4 {
+        font-size: 30px;
+        line-height: 1.1;
+        margin: 0;
+    }
+
+    /* -----------------------------------------
+       BUTTONS
+    ----------------------------------------- */
+
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+        margin-top: 10px;
+    }
+
+    .hero-buttons a {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        padding: 16px 20px;
+        font-size: 16px;
+    }
+
+    /* -----------------------------------------
+       RIGHT FORM
+    ----------------------------------------- */
+
+    .hero-right {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .lead-card {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 28px 20px;
+        border-radius: 20px;
+        margin: 0;
+    }
+
+    .lead-card h3 {
+        font-size: 32px;
+        line-height: 1.12;
+        margin-bottom: 12px;
+    }
+
+    .lead-card p {
+        font-size: 15px;
+        line-height: 1.5;
+        margin-bottom: 22px;
+    }
+
+    /* -----------------------------------------
+       FORM INPUTS
+    ----------------------------------------- */
+
+    #leadForm {
+        gap: 13px;
+    }
+
+    .lead-card input,
+    .lead-card select,
+    .lead-card textarea {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: 15px;
+        font-size: 15px;
+        border-radius: 11px;
+    }
+
+    .lead-card textarea {
+        min-height: 110px;
+    }
+
+    .lead-card button {
+        width: 100%;
+        padding: 16px;
+        font-size: 16px;
+    }
+
+    /* -----------------------------------------
+       PRIVACY TEXT
+    ----------------------------------------- */
+
+    .privacy-text {
+        font-size: 12px;
+        line-height: 1.4;
+        margin-top: 15px;
+        align-items: flex-start;
+    }
+
+    /* -----------------------------------------
+       HERO STRIP
+       Keep it below hero and prevent overflow
+    ----------------------------------------- */
+
+    .hero-strip {
+        width: 100%;
+        box-sizing: border-box;
+        margin-top: 0;
+        padding: 28px 10px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 4px;
+        overflow: hidden;
+    }
+
+    .strip-box {
+        min-width: 0;
+        text-align: center;
+        padding: 5px 2px;
+    }
+
+    .strip-box h2 {
+        font-size: 38px;
+        line-height: 1;
+        margin-bottom: 7px;
+    }
+
+    .strip-box span {
+        display: block;
+        font-size: 8px;
+        letter-spacing: 1.5px;
+        white-space: nowrap;
+    }
+
+    .strip-box p {
+        font-size: 10px;
+        line-height: 1.25;
+        margin-top: 7px;
+    }
+
+    .strip-line {
+        display: none;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE DEVICES
+   360px – 390px
+========================================================= */
+
+@media (max-width: 390px) {
+
+    .hero {
+        padding-top: 85px;
+        padding-bottom: 25px;
+    }
+
+    .hero-container {
+        padding-left: 15px;
+        padding-right: 15px;
+        gap: 28px;
+    }
+
+    .hero-title {
+        font-size: 48px;
+        letter-spacing: -1.5px;
+    }
+
+    .hero-subtitle {
+        font-size: 32px;
+    }
+
+    .hero-description {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .hero-price h3,
+    .hero-price h4 {
+        font-size: 27px;
+    }
+
+    .hero-buttons a {
+        padding: 15px;
+        font-size: 15px;
+    }
+
+    .lead-card {
+        padding: 25px 17px;
+    }
+
+    .lead-card h3 {
+        font-size: 28px;
+    }
+
+    .strip-box h2 {
+        font-size: 32px;
+    }
+
+    .strip-box span {
+        font-size: 7px;
+    }
+
+    .strip-box p {
+        font-size: 9px;
+    }
+
+}
+
+
+/* =========================================================
+   EXTRA SMALL DEVICES
+   320px – 359px
+========================================================= */
+
+@media (max-width: 359px) {
+
+    .hero-title {
+        font-size: 43px;
+    }
+
+    .hero-subtitle {
+        font-size: 29px;
+    }
+
+    .hero-description {
+        font-size: 13px;
+    }
+
+    .hero-price h3,
+    .hero-price h4 {
+        font-size: 25px;
+    }
+
+    .lead-card h3 {
+        font-size: 26px;
+    }
+
+    .strip-box h2 {
+        font-size: 28px;
+    }
+
+}
+/* =========================================================
+   MOBILE MICRO POLISH PATCH
+   CRC THE PERIDONA
+   Add this at the VERY END of style.css
+========================================================= */
+
+@media (max-width: 600px) {
+
+    /* =========================================
+       1. FLOATING CALL + WHATSAPP BUTTONS
+       ========================================= */
+
+    .floating-call,
+    .call-button,
+    .phone-float,
+    .floating-phone {
+        right: 14px !important;
+        z-index: 9998 !important;
+    }
+
+    .floating-whatsapp,
+    .whatsapp-button,
+    .whatsapp-float {
+        right: 14px !important;
+        z-index: 9999 !important;
+    }
+
+
+    /* =========================================
+       2. LEAD FORM — SMALL SPACING POLISH
+       ========================================= */
+
+    .lead-card {
+        padding: 28px 20px !important;
+        border-radius: 20px !important;
+    }
+
+    .lead-card h3 {
+        font-size: 27px !important;
+        line-height: 1.2 !important;
+        margin-bottom: 10px !important;
+    }
+
+    .lead-card p {
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+        margin-bottom: 20px !important;
+    }
+
+    #leadForm {
+        gap: 12px !important;
+    }
+
+    .lead-card input,
+    .lead-card select,
+    .lead-card textarea {
+        padding: 14px !important;
+        font-size: 14px !important;
+        border-radius: 10px !important;
+    }
+
+    .lead-card textarea {
+        min-height: 90px !important;
+    }
+
+    .lead-card button {
+        padding: 15px !important;
+        font-size: 15px !important;
+    }
+
+    .privacy-text {
+        font-size: 11px !important;
+        line-height: 1.4 !important;
+        margin-top: 12px !important;
+    }
+
+
+    /* =========================================
+       3. STATS STRIP
+       ========================================= */
+
+    .hero-strip {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 0 !important;
+        width: 100% !important;
+        padding: 22px 6px !important;
+        margin: 0 !important;
+        border-radius: 18px !important;
+        box-sizing: border-box !important;
+    }
+
+    .strip-box {
+        min-width: 0 !important;
+        text-align: center !important;
+        padding: 0 3px !important;
+    }
+
+    .strip-box h2 {
+        font-size: 30px !important;
+        line-height: 1 !important;
+        margin-bottom: 7px !important;
+    }
+
+    .strip-box span {
+        display: block !important;
+        font-size: 8px !important;
+        letter-spacing: 1.5px !important;
+        line-height: 1.2 !important;
+        white-space: nowrap !important;
+    }
+
+    .strip-box p {
+        font-size: 10px !important;
+        line-height: 1.25 !important;
+        margin-top: 6px !important;
+        white-space: normal !important;
+    }
+
+    .strip-line {
+        display: none !important;
+    }
+
+
+    /* =========================================
+       4. PREVENT HORIZONTAL OVERFLOW
+       ========================================= */
+
+    .hero,
+    .hero-container,
+    .hero-left,
+    .hero-right,
+    .lead-card,
+    .hero-strip {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    body {
+        overflow-x: hidden !important;
+    }
+
+}
+
+
+/* =========================================
+   EXTRA SMALL PHONES
+   ========================================= */
+
+@media (max-width: 380px) {
+
+    .lead-card {
+        padding: 24px 16px !important;
+    }
+
+    .lead-card h3 {
+        font-size: 24px !important;
+    }
+
+    .strip-box h2 {
+        font-size: 26px !important;
+    }
+
+    .strip-box span {
+        font-size: 7px !important;
+        letter-spacing: 1px !important;
+    }
+
+    .strip-box p {
+        font-size: 9px !important;
+    }
+
+}
+/* =========================================
+   MOBILE FLOATING BUTTON POSITION FIX
+========================================= */
+
+@media (max-width: 600px) {
+
+    .call-btn,
+    .whatsapp-btn {
+        right: 14px !important;
+        z-index: 9999 !important;
+    }
+
+    .call-btn {
+        bottom: 105px !important;
+    }
+
+    .whatsapp-btn {
+        bottom: 28px !important;
+    }
+
+}
+/* =========================================
+   HERO CTA TRUST NOTE
+========================================= */
+
+.hero-cta-note {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: rgba(255,255,255,.65);
+
+    font-size: 12px;
+    letter-spacing: .5px;
+}
+
+.hero-cta-note i {
+    color: #d4af37;
+    font-size: 12px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 767px) {
+
+    .hero-cta-note {
+        justify-content: center;
+        font-size: 11px;
+        margin-top: 11px;
+    }
+
+}
+/* FIX: LOCATION MAP BUTTON CLICK */
+.location-buttons {
+    position: relative;
+    z-index: 9999;
+}
+
+.location-buttons .btn-secondary {
+    position: relative;
+    z-index: 10000;
+    pointer-events: auto !important;
+    cursor: pointer;
+}
+/* ====================================================
+   REAL PROP FINAL VISUAL SAFETY
+   Keep the approved CRC imagery visible after SPA injection.
+   These rules do not alter the approved design; they only
+   prevent dynamically injected content/assets from collapsing.
+==================================================== */
+.crc-peridona-root .story-block {
+    display: block !important;
+    visibility: visible !important;
+    min-height: 520px;
+}
+.crc-peridona-root .story-grid {
+    display: grid !important;
+}
+.crc-peridona-root .story-image {
+    display: block !important;
+    visibility: visible !important;
+    min-height: 360px;
+}
+.crc-peridona-root .story-image img {
+    display: block !important;
+    visibility: visible !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 360px;
+    object-fit: cover;
+}
+.crc-peridona-root .amenities-showcase {
+    display: block !important;
+    visibility: visible !important;
+}
+.crc-peridona-root .featured-amenity,
+.crc-peridona-root .amenity-card {
+    display: block;
+    visibility: visible !important;
+}
+.crc-peridona-root .featured-amenity img,
+.crc-peridona-root .amenity-card img {
+    display: block !important;
+    visibility: visible !important;
+    width: 100% !important;
+}
+@media (max-width: 992px) {
+    .crc-peridona-root .story-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+    }
+    .crc-peridona-root .story-block {
+        min-height: 0;
+    }
+}

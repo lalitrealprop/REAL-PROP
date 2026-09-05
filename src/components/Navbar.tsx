@@ -27,7 +27,10 @@ export default function Navbar({ isAdmin }: { isAdmin: boolean }) {
     { name: 'About', href: '/#about' },
     { name: 'Contact', href: '/#contact' },
   ];
-  const projects = [{ name: 'SVG Central Square', href: '/projects/svg-central-square' }];
+  const projects = [
+    { name: 'SVG Central Square', href: '/projects/svg-central-square' },
+    { name: 'CRC The Peridona', href: '/projects/crc-the-peridona' },
+  ];
   const locations = [
     { name: 'Greater Noida', href: '/greater-noida' }, { name: 'Noida', href: '/noida' },
     { name: 'Noida Extension', href: '/noida-extension' }, { name: 'Ghaziabad', href: '/ghaziabad' }, { name: 'Delhi', href: '/delhi' },
