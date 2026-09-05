@@ -2218,6 +2218,12 @@ export default function CRCThePeridona() {
         message: lead.message || 'CRC The Peridona enquiry',
         createdAt: serverTimestamp(),
       });
+            if (typeof window !== 'undefined' && typeof (window as any).fbq === 'function') {
+        (window as any).fbq('track', 'Lead', {
+          content_name: 'CRC The Peridona',
+          content_category: 'Real Estate Lead',
+        });
+      }
     };
     window.__realPropTrackCRCEvent = (name, params = {}) => trackEvent(name, { project_name: 'CRC The Peridona', project_slug: 'crc-the-peridona', ...params });
 
