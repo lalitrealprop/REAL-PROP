@@ -6,7 +6,7 @@ import { collection, query, orderBy, onSnapshot, addDoc, updateDoc, deleteDoc, d
 import { Project, Lead } from '../types';
 import { useForm, useWatch } from 'react-hook-form';
 import { motion, AnimatePresence } from 'motion/react';
-import { LayoutDashboard, Plus, Trash2, Edit, LogOut, ChevronRight, Loader2, Building, Users, CheckCircle2, X, Image as ImageIcon, MapPin, Tag, FileText, Database, Copy, Check, Lock, LogIn } from 'lucide-react';
+import { LayoutDashboard, Plus, Trash2, Edit, LogOut, ChevronRight, Loader2, Building, Users, CheckCircle2, X, Image as ImageIcon, MapPin, Tag, FileText, Database, Copy, Check, Lock, LogIn, Eye, Phone, Mail, MessageCircle } from 'lucide-react';
 import { getDirectImageUrl } from '../lib/imageUtils';
 
 function cn(...classes: (string | boolean | undefined)[]) {
@@ -755,16 +755,182 @@ function ProjectForm({ project, onClose }: { project: Project | null, onClose: (
   );
 }
 
+type AdminLead = Lead & {
+  project?: string;
+  propertyInterest?: string;
+  propertyType?: string;
+  email?: string;
+  visitDate?: string;
+  floor?: string;
+  area?: number;
+  location?: string;
+  budget?: string;
+  message?: string;
+  createdAt?: any;
+};
+
+function getLeadProject(lead: AdminLead) {
+  if (lead.project) return lead.project;
+  if (lead.propertyInterest === 'CRC The Peridona') return 'CRC The Peridona';
+  if (lead.propertyInterest === 'SVG Central Square') return 'SVG Central Square';
+  return 'Other / Unknown';
+}
+
+function getLeadInterest(lead: AdminLead) {
+  if (lead.propertyType && lead.propertyType !== 'General') return lead.propertyType;
+
+  if (lead.message) {
+    const savedInterest = lead.message.split(' | Floor:')[0];
+    if (
+      savedInterest === 'Retail Shop' ||
+      savedInterest === 'Pre-Leased Retail Shop' ||
+      savedInterest === 'Investment' ||
+      savedInterest === 'Price & Availability' ||
+      savedInterest === 'Site Visit'
+    ) return savedInterest;
+  }
+
+  return 'General';
+}
+
+function formatLeadDate(createdAt: any) {
+  if (!createdAt?.toDate) return 'N/A';
+  return createdAt.toDate().toLocaleString('en-IN', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+}
+
+function LeadDetailsModal({ lead, onClose }: { lead: AdminLead | null; onClose: () => void }) {
+  if (!lead) return null;
+
+  const project = getLeadProject(lead);
+  const interest = getLeadInterest(lead);
+  const isSVG = project === 'SVG Central Square';
+  const isCRC = project === 'CRC The Peridona';
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.96, y: 10 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        className="bg-white w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl shadow-2xl"
+      >
+        <div className="p-5 sm:p-7 border-b border-gray-100 flex items-start justify-between gap-4 sticky top-0 bg-white z-10">
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-widest text-red-600 mb-1">Lead Details</p>
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900">{lead.name}</h3>
+            <p className="text-sm text-gray-500 mt-1">Received {formatLeadDate(lead.createdAt)}</p>
+          </div>
+          <button onClick={onClose} className="p-2 rounded-full bg-gray-100 text-gray-500 hover:text-gray-900">
+            <X size={20} />
+          </button>
+        </div>
+
+        <div className="p-5 sm:p-7 space-y-6">
+          <div className="rounded-2xl border border-red-100 bg-red-50/60 p-4 sm:p-5">
+            <p className="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-2">Project</p>
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-sm sm:text-base font-bold text-gray-900">{project}</span>
+              <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-white text-red-600 uppercase">{interest}</span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="rounded-2xl border border-gray-100 p-4">
+              <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Mobile</p>
+              <a href={`tel:${lead.phone}`} className="text-sm font-bold text-red-600 flex items-center gap-2">
+                <Phone size={15} /> {lead.phone || 'Not provided'}
+              </a>
+            </div>
+            <div className="rounded-2xl border border-gray-100 p-4">
+              <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Email</p>
+              {lead.email ? (
+                <a href={`mailto:${lead.email}`} className="text-sm font-semibold text-gray-800 flex items-center gap-2 break-all">
+                  <Mail size={15} /> {lead.email}
+                </a>
+              ) : (
+                <p className="text-sm text-gray-400">Not provided</p>
+              )}
+            </div>
+          </div>
+
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">Requirement</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="bg-gray-50 rounded-xl p-3">
+                <span className="text-[10px] text-gray-400 block">Requirement</span>
+                <span className="text-sm font-bold text-gray-900">{interest}</span>
+              </div>
+              <div className="bg-gray-50 rounded-xl p-3">
+                <span className="text-[10px] text-gray-400 block">Budget / Estimate</span>
+                <span className="text-sm font-bold text-gray-900">{lead.budget || 'Not provided'}</span>
+              </div>
+              <div className="bg-gray-50 rounded-xl p-3">
+                <span className="text-[10px] text-gray-400 block">Location</span>
+                <span className="text-sm font-bold text-gray-900">{lead.location || 'Not provided'}</span>
+              </div>
+              {isSVG && (
+                <>
+                  <div className="bg-gray-50 rounded-xl p-3">
+                    <span className="text-[10px] text-gray-400 block">Floor</span>
+                    <span className="text-sm font-bold text-gray-900">{lead.floor || 'Not provided'}</span>
+                  </div>
+                  <div className="bg-gray-50 rounded-xl p-3">
+                    <span className="text-[10px] text-gray-400 block">Area</span>
+                    <span className="text-sm font-bold text-gray-900">{lead.area ? `${lead.area.toLocaleString('en-IN')} sq.ft.` : 'Not provided'}</span>
+                  </div>
+                  <div className="bg-gray-50 rounded-xl p-3">
+                    <span className="text-[10px] text-gray-400 block">PLC</span>
+                    <span className="text-sm font-bold text-gray-900">{lead.message?.match(/PLC:\s*([\d.]+)%/)?.[1] ? `${lead.message.match(/PLC:\s*([\d.]+)%/)?.[1]}%` : '0%'}</span>
+                  </div>
+                </>
+              )}
+              {isCRC && (
+                <div className="bg-gray-50 rounded-xl p-3">
+                  <span className="text-[10px] text-gray-400 block">Preferred Visit Date</span>
+                  <span className="text-sm font-bold text-gray-900">{lead.visitDate || 'Not provided'}</span>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Client Message</p>
+            <div className="rounded-2xl bg-gray-50 border border-gray-100 p-4 text-sm text-gray-700 leading-6 whitespace-pre-wrap">
+              {lead.message || 'No message provided'}
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-3 pt-1">
+            <a href={`tel:${lead.phone}`} className="flex-1 inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl transition-all">
+              <Phone size={17} /> Call Client
+            </a>
+            <a href={`https://wa.me/${String(lead.phone || '').replace(/\D/g, '')}`} target="_blank" rel="noreferrer" className="flex-1 inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl transition-all">
+              <MessageCircle size={17} /> WhatsApp
+            </a>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
 function LeadManagement() {
-  const [leads, setLeads] = useState<Lead[]>([]);
+  const [leads, setLeads] = useState<AdminLead[]>([]);
   const [loading, setLoading] = useState(true);
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
+  const [selectedLead, setSelectedLead] = useState<AdminLead | null>(null);
+  const [projectFilter, setProjectFilter] = useState('All');
 
   useEffect(() => {
     const q = query(collection(db, 'leads'), orderBy('createdAt', 'desc'));
     const unsubscribe = onSnapshot(q, (snapshot) => {
-      setLeads(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Lead)));
+      setLeads(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as AdminLead)));
       setLoading(false);
     });
     return () => unsubscribe();
@@ -780,146 +946,171 @@ function LeadManagement() {
     try {
       await deleteDoc(doc(db, 'leads', id));
       setDeleteConfirmId(null);
+      if (selectedLead?.id === id) setSelectedLead(null);
     } catch (error) {
       handleFirestoreError(error, OperationType.DELETE, 'leads');
     }
   };
 
+  const projectOptions = ['All', ...Array.from(new Set(leads.map(getLeadProject)))];
+  const visibleLeads = projectFilter === 'All' ? leads : leads.filter((lead) => getLeadProject(lead) === projectFilter);
+
   return (
-    <div className="space-y-8">
-      <h2 className="text-2xl lg:text-3xl font-bold text-gray-900">Lead Management</h2>
+    <div className="space-y-6 sm:space-y-8">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <h2 className="text-2xl lg:text-3xl font-bold text-gray-900">Lead Management</h2>
+          <p className="text-sm text-gray-500 mt-1">Complete client requirements from every project enquiry.</p>
+        </div>
+        <div className="flex items-center gap-3">
+          <span className="text-xs font-bold text-gray-500">{visibleLeads.length} Lead{visibleLeads.length === 1 ? '' : 's'}</span>
+          <select
+            value={projectFilter}
+            onChange={(e) => setProjectFilter(e.target.value)}
+            className="px-3 py-2 rounded-xl border border-gray-200 bg-white text-xs font-bold text-gray-700 outline-none focus:ring-2 focus:ring-red-500"
+          >
+            {projectOptions.map((project) => <option key={project} value={project}>{project === 'All' ? 'All Projects' : project}</option>)}
+          </select>
+        </div>
+      </div>
 
       <div className="grid grid-cols-1 gap-4 lg:hidden">
-        {leads.map((lead) => (
-          <div key={lead.id} className="bg-white p-4 rounded-2xl shadow-md border border-gray-100 space-y-4">
-            <div className="flex justify-between items-start gap-4">
-              <div className="min-w-0">
-                <p className="font-bold text-gray-900 truncate">{lead.name}</p>
-                <div className="flex items-center space-x-2">
-                  <p className="text-xs text-red-600 font-medium">{lead.phone}</p>
-                  <button onClick={() => copyToClipboard(lead.phone, lead.id)} className="text-gray-400 flex-shrink-0">
-                    {copiedId === lead.id ? <Check size={12} className="text-green-500" /> : <Copy size={12} />}
-                  </button>
+        {visibleLeads.map((lead) => {
+          const project = getLeadProject(lead);
+          const interest = getLeadInterest(lead);
+          return (
+            <div key={lead.id} className="bg-white p-4 rounded-2xl shadow-md border border-gray-100 space-y-4">
+              <div className="flex justify-between items-start gap-4">
+                <div className="min-w-0">
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-red-600 truncate">{project}</p>
+                  <p className="font-bold text-gray-900 truncate mt-1">{lead.name}</p>
+                  <div className="flex items-center space-x-2 mt-1">
+                    <p className="text-xs text-red-600 font-medium">{lead.phone}</p>
+                    <button onClick={() => copyToClipboard(lead.phone, lead.id)} className="text-gray-400 flex-shrink-0">
+                      {copiedId === lead.id ? <Check size={12} className="text-green-500" /> : <Copy size={12} />}
+                    </button>
+                  </div>
                 </div>
+                <button onClick={() => setDeleteConfirmId(lead.id)} className="text-gray-300 hover:text-red-600 flex-shrink-0">
+                  <Trash2 size={16} />
+                </button>
               </div>
-              <button onClick={() => setDeleteConfirmId(lead.id)} className="text-gray-300 hover:text-red-600 flex-shrink-0">
-                <Trash2 size={16} />
-              </button>
+
+              <div className="flex flex-wrap gap-2">
+                <span className="text-[10px] font-bold px-2 py-1 rounded-full bg-red-50 text-red-600 uppercase">{interest}</span>
+                {lead.budget && <span className="text-[10px] font-bold px-2 py-1 rounded-full bg-gray-100 text-gray-600">{lead.budget}</span>}
+              </div>
+
+              <div className="grid grid-cols-2 gap-2 text-xs">
+                <div className="bg-gray-50 rounded-xl p-3"><span className="text-gray-400 block">Location</span><b>{lead.location || '—'}</b></div>
+                <div className="bg-gray-50 rounded-xl p-3"><span className="text-gray-400 block">{project === 'SVG Central Square' ? 'Floor / Area' : 'Visit Date'}</span><b>{project === 'SVG Central Square' ? `${lead.floor || '—'}${lead.area ? ` · ${lead.area} sq.ft.` : ''}` : (lead.visitDate || '—')}</b></div>
+              </div>
+
+              <div className="flex gap-2">
+                <button onClick={() => setSelectedLead(lead)} className="flex-1 inline-flex items-center justify-center gap-2 bg-gray-900 text-white font-bold py-2.5 rounded-xl text-xs"><Eye size={14} /> View Full Details</button>
+                <a href={`tel:${lead.phone}`} className="w-11 inline-flex items-center justify-center bg-red-50 text-red-600 rounded-xl"><Phone size={16} /></a>
+              </div>
+              <p className="text-[10px] text-gray-400">Received: {formatLeadDate(lead.createdAt)}</p>
             </div>
-            <div className="flex flex-wrap gap-2">
-              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-red-50 text-red-600 uppercase">
-                {lead.propertyType || 'General'}
-              </span>
-              {lead.budget && <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-100 text-gray-500 uppercase">
-                {lead.budget}
-              </span>}
-            </div>
-            <p className="text-[10px] text-gray-400">Received: {lead.createdAt?.toDate ? lead.createdAt.toDate().toLocaleDateString() : 'N/A'}</p>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       <div className="hidden lg:block bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
-        <table className="w-full text-left">
-          <thead className="bg-gray-50 border-b border-gray-100">
-            <tr>
-              <th className="px-6 py-4 text-sm font-bold text-gray-700 uppercase tracking-wider">Customer</th>
-              <th className="px-6 py-4 text-sm font-bold text-gray-700 uppercase tracking-wider">Interest</th>
-              <th className="px-6 py-4 text-sm font-bold text-gray-700 uppercase tracking-wider">Details</th>
-              <th className="px-6 py-4 text-sm font-bold text-gray-700 uppercase tracking-wider">Date</th>
-              <th className="px-6 py-4 text-sm font-bold text-gray-700 uppercase tracking-wider text-right">Actions</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-100">
-            {leads.map((lead) => (
-              <tr key={lead.id} className="hover:bg-gray-50 transition-colors">
-                <td className="px-6 py-4">
-                  <div className="flex items-center justify-between group">
-                    <div>
-                      <p className="font-bold text-gray-900">{lead.name}</p>
-                      <p className="text-xs text-red-600 font-medium">{lead.phone}</p>
-                    </div>
-                    <button 
-                      onClick={() => copyToClipboard(lead.phone, lead.id)}
-                      className="p-2 text-gray-400 hover:text-red-600 transition-all opacity-0 group-hover:opacity-100"
-                    >
-                      {copiedId === lead.id ? <Check size={14} className="text-green-500" /> : <Copy size={14} />}
-                    </button>
-                  </div>
-                </td>
-                <td className="px-6 py-4">
-                  <span className="text-xs font-bold px-3 py-1 rounded-full bg-red-50 text-red-600 uppercase tracking-wider">
-                    {lead.propertyType || 'General'}
-                  </span>
-                </td>
-                <td className="px-6 py-4">
-                  <div className="text-xs space-y-1">
-                    {lead.budget && <p><span className="text-gray-400">Budget:</span> {lead.budget}</p>}
-                    {lead.location && <p><span className="text-gray-400">Loc:</span> {lead.location}</p>}
-                  </div>
-                </td>
-                <td className="px-6 py-4">
-                  <p className="text-xs text-gray-500">
-                    {lead.createdAt?.toDate ? lead.createdAt.toDate().toLocaleDateString() : 'N/A'}
-                  </p>
-                </td>
-                <td className="px-6 py-4 text-right">
-                  <button 
-                    onClick={() => setDeleteConfirmId(lead.id)}
-                    className="p-2 text-gray-400 hover:text-red-600 transition-colors"
-                  >
-                    <Trash2 size={16} />
-                  </button>
-                </td>
+        <div className="overflow-x-auto">
+          <table className="w-full text-left min-w-[1050px]">
+            <thead className="bg-gray-50 border-b border-gray-100">
+              <tr>
+                <th className="px-5 py-4 text-xs font-bold text-gray-700 uppercase tracking-wider">Project</th>
+                <th className="px-5 py-4 text-xs font-bold text-gray-700 uppercase tracking-wider">Client</th>
+                <th className="px-5 py-4 text-xs font-bold text-gray-700 uppercase tracking-wider">Requirement</th>
+                <th className="px-5 py-4 text-xs font-bold text-gray-700 uppercase tracking-wider">Property Details</th>
+                <th className="px-5 py-4 text-xs font-bold text-gray-700 uppercase tracking-wider">Received</th>
+                <th className="px-5 py-4 text-xs font-bold text-gray-700 uppercase tracking-wider text-right">Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-        {loading && (
-          <div className="flex justify-center py-20">
-            <Loader2 className="animate-spin text-red-600" size={32} />
-          </div>
-        )}
-        {!loading && leads.length === 0 && (
+            </thead>
+            <tbody className="divide-y divide-gray-100">
+              {visibleLeads.map((lead) => {
+                const project = getLeadProject(lead);
+                const interest = getLeadInterest(lead);
+                return (
+                  <tr key={lead.id} className="hover:bg-gray-50 transition-colors align-top">
+                    <td className="px-5 py-4">
+                      <div className="max-w-[170px]">
+                        <p className="font-bold text-gray-900 text-sm leading-5">{project}</p>
+                        <p className="text-[10px] text-gray-400 mt-1">{lead.location || 'Location not provided'}</p>
+                      </div>
+                    </td>
+                    <td className="px-5 py-4">
+                      <div className="min-w-[135px]">
+                        <p className="font-bold text-gray-900 text-sm">{lead.name}</p>
+                        <p className="text-xs text-red-600 font-medium mt-1">{lead.phone}</p>
+                        {lead.email && <p className="text-[10px] text-gray-500 mt-1 break-all">{lead.email}</p>}
+                      </div>
+                    </td>
+                    <td className="px-5 py-4">
+                      <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-red-50 text-red-600 uppercase whitespace-nowrap">{interest}</span>
+                      {lead.budget && <p className="text-[10px] text-gray-500 mt-2 max-w-[160px]">{lead.budget}</p>}
+                    </td>
+                    <td className="px-5 py-4">
+                      <div className="text-xs space-y-1 min-w-[190px]">
+                        {project === 'SVG Central Square' ? (
+                          <>
+                            <p><span className="text-gray-400">Floor:</span> <b>{lead.floor || '—'}</b></p>
+                            <p><span className="text-gray-400">Area:</span> <b>{lead.area ? `${lead.area.toLocaleString('en-IN')} sq.ft.` : '—'}</b></p>
+                            <p><span className="text-gray-400">PLC:</span> <b>{lead.message?.match(/PLC:\s*([\d.]+)%/)?.[1] ? `${lead.message.match(/PLC:\s*([\d.]+)%/)?.[1]}%` : '0%'}</b></p>
+                          </>
+                        ) : (
+                          <>
+                            <p><span className="text-gray-400">Configuration:</span> <b>{lead.propertyType || '—'}</b></p>
+                            <p><span className="text-gray-400">Visit:</span> <b>{lead.visitDate || '—'}</b></p>
+                          </>
+                        )}
+                      </div>
+                    </td>
+                    <td className="px-5 py-4">
+                      <p className="text-[10px] text-gray-500 whitespace-nowrap">{formatLeadDate(lead.createdAt)}</p>
+                    </td>
+                    <td className="px-5 py-4">
+                      <div className="flex justify-end gap-1">
+                        <button onClick={() => setSelectedLead(lead)} title="View full details" className="p-2 text-gray-400 hover:text-gray-900 transition-colors"><Eye size={17} /></button>
+                        <a href={`tel:${lead.phone}`} title="Call client" className="p-2 text-gray-400 hover:text-red-600 transition-colors"><Phone size={17} /></a>
+                        <a href={`https://wa.me/${String(lead.phone || '').replace(/\D/g, '')}`} target="_blank" rel="noreferrer" title="WhatsApp client" className="p-2 text-gray-400 hover:text-green-600 transition-colors"><MessageCircle size={17} /></a>
+                        <button onClick={() => setDeleteConfirmId(lead.id)} title="Delete lead" className="p-2 text-gray-400 hover:text-red-600 transition-colors"><Trash2 size={17} /></button>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+        {loading && <div className="flex justify-center py-20"><Loader2 className="animate-spin text-red-600" size={32} /></div>}
+        {!loading && visibleLeads.length === 0 && (
           <div className="text-center py-20">
             <Users className="mx-auto text-gray-300 mb-4" size={64} />
-            <p className="text-gray-500 font-medium">No leads collected yet.</p>
+            <p className="text-gray-500 font-medium">No leads found for this project.</p>
           </div>
         )}
       </div>
 
       <AnimatePresence>
         {deleteConfirmId && (
-          <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-white max-w-sm w-full p-8 rounded-3xl shadow-2xl text-center"
-            >
-              <div className="w-16 h-16 bg-red-50 text-red-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Trash2 size={32} />
-              </div>
+          <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+            <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }} className="bg-white max-w-sm w-full p-8 rounded-3xl shadow-2xl text-center">
+              <div className="w-16 h-16 bg-red-50 text-red-600 rounded-full flex items-center justify-center mx-auto mb-6"><Trash2 size={32} /></div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Delete Lead?</h3>
               <p className="text-gray-500 mb-8">Are you sure you want to delete this lead? This action cannot be undone.</p>
               <div className="flex gap-3">
-                <button
-                  onClick={() => setDeleteConfirmId(null)}
-                  className="flex-1 px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold rounded-xl transition-all"
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={() => handleDeleteLead(deleteConfirmId)}
-                  className="flex-1 px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl shadow-lg shadow-red-200 transition-all"
-                >
-                  Delete
-                </button>
+                <button onClick={() => setDeleteConfirmId(null)} className="flex-1 px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold rounded-xl transition-all">Cancel</button>
+                <button onClick={() => handleDeleteLead(deleteConfirmId)} className="flex-1 px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl shadow-lg shadow-red-200 transition-all">Delete</button>
               </div>
             </motion.div>
           </div>
         )}
       </AnimatePresence>
+
+      <LeadDetailsModal lead={selectedLead} onClose={() => setSelectedLead(null)} />
     </div>
   );
 }

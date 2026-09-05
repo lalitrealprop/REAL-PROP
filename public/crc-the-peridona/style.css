@@ -6513,3 +6513,56 @@ border-color .35s ease;
         min-height: 0;
     }
 }
+/* =========================================================
+   CRC THE PERIDONA - MOBILE CHAPTER IMAGE FIX
+   Keep complete chapter artwork visible on mobile
+========================================================= */
+
+@media (max-width: 767px) {
+
+  .crc-peridona-root .story-block {
+    display: block !important;
+    visibility: visible !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  .crc-peridona-root .story-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 30px !important;
+  }
+
+  .crc-peridona-root .story-image {
+    display: block !important;
+    visibility: visible !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  .crc-peridona-root .story-image img {
+    display: block !important;
+    visibility: visible !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-width: 100% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+  }
+
+  /* Prevent chapter artwork from being cropped */
+  .crc-peridona-root .story-block img {
+    aspect-ratio: auto !important;
+  }
+
+  /* Keep chapter text below the complete artwork */
+  .crc-peridona-root .story-content {
+    width: 100% !important;
+    height: auto !important;
+  }
+}

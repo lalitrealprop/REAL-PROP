@@ -50,7 +50,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-[850px] lg:h-[900px] flex items-center pt-20 pb-12 overflow-hidden bg-[#0a1128] font-sans">
+    <section className="relative min-h-[850px] lg:h-[900px] w-full max-w-full flex items-center pt-20 pb-12 overflow-hidden bg-[#0a1128] font-sans">
       {/* Background: Premium Commercial Building at Sunset */}
       <div className="absolute inset-0 z-0">
         <img

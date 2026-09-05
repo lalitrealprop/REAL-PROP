@@ -153,7 +153,7 @@ function AppShell({
   }
 
   return (
-    <div className="min-h-screen flex flex-col font-sans text-gray-900">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden flex flex-col font-sans text-gray-900">
       <Navbar isAdmin={isAdmin} />
       <main className="flex-grow">
         <Routes>

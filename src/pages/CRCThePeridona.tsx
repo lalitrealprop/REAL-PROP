@@ -26,6 +26,37 @@ const CRC_BODY = `
     </div>
 
 </div>
+
+<!--=========================================
+        SUCCESS POPUP
+==========================================-->
+
+<div id="successPopup" class="success-popup">
+
+    <div class="success-box">
+
+        <div class="success-icon">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+
+        <h2>Thank You!</h2>
+
+        <p>
+            Thank you for your interest in CRC The Peridona.
+        </p>
+
+        <p class="small-text">
+            Our Luxury Property Advisor will contact you shortly to schedule your exclusive site visit.
+        </p>
+
+        <button id="continueBrowsing" type="button">
+            Continue Browsing
+        </button>
+
+    </div>
+
+</div>
+
 <!-- ===========================
         NAVBAR
 =========================== -->
@@ -62,10 +93,12 @@ const CRC_BODY = `
 
 <div class="nav-btn">
 
+<a href="/" class="realprop-home-link" aria-label="Go to REAL PROP Home">
+    ← REAL PROP HOME
+</a>
+
 <a href="#contact">
-
-Book Site Visit
-
+    Book Site Visit
 </a>
 
 </div>
@@ -2101,6 +2134,56 @@ export default function CRCThePeridona() {
     upsertMeta('name', 'twitter:image', 'https://realprop.online/crc-the-peridona/images/hero/hero-bg.webp');
     upsertCanonical(CRC_URL);
 
+
+    const homeButtonStyle = document.createElement('style');
+    homeButtonStyle.id = 'crc-realprop-home-button-style';
+    homeButtonStyle.textContent = `
+      .crc-peridona-root .realprop-home-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        margin-right: 12px;
+        padding: 10px 16px;
+        border: 1px solid rgba(212, 175, 55, 0.65);
+        border-radius: 999px;
+        color: #d4af37;
+        background: rgba(5, 8, 22, 0.55);
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        white-space: nowrap;
+        transition: all 0.25s ease;
+      }
+      .crc-peridona-root .realprop-home-link:hover {
+        color: #050816;
+        background: #d4af37;
+        border-color: #d4af37;
+      }
+      @media (max-width: 992px) {
+        .crc-peridona-root .realprop-home-link {
+          padding: 8px 12px;
+          font-size: 11px;
+          margin-right: 8px;
+        }
+      }
+      @media (max-width: 767px) {
+        .crc-peridona-root .nav-btn .realprop-home-link {
+          position: absolute;
+          left: 18px;
+          top: 50%;
+          transform: translateY(-50%);
+          z-index: 1002;
+          padding: 7px 10px;
+          font-size: 9px;
+          letter-spacing: 0.25px;
+          margin: 0;
+        }
+      }
+    `;
+    document.head.appendChild(homeButtonStyle);
+
     const links: HTMLLinkElement[] = [];
     const addStylesheet = (href: string, id: string) => {
       const link = document.createElement('link');
@@ -2191,6 +2274,7 @@ export default function CRCThePeridona() {
       rootRef.current?.removeEventListener('click', clickHandler);
       if (rootRef.current) rootRef.current.innerHTML = '';
       links.forEach(link => link.remove());
+      homeButtonStyle.remove();
       schemaScript.remove();
       delete window.__realPropSubmitCRCLead;
       delete window.__realPropTrackCRCEvent;
