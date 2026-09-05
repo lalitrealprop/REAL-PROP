@@ -201,8 +201,16 @@ export default function SVGCentralSquare() {
         area: numericArea,
         createdAt: serverTimestamp(),
       });
-      setSubmitted(true);
-      trackLeadSubmitted();
+     setSubmitted(true);
+
+if (typeof window !== 'undefined' && typeof (window as any).fbq === 'function') {
+  (window as any).fbq('track', 'Lead', {
+    content_name: 'SVG Central Square',
+    content_category: 'Real Estate Lead',
+  });
+}
+
+trackLeadSubmitted();
     } catch (error) {
       console.error(error);
       window.location.href = whatsappUrl;
