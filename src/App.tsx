@@ -1,12 +1,9 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
-import { onAuthStateChanged, User } from 'firebase/auth';
-import { auth, signInWithGoogle, logout } from './firebase';
-import { motion, AnimatePresence } from 'motion/react';
-import { Phone, MessageCircle, Menu, X, LayoutDashboard, LogOut, Plus, Trash2, Edit, ChevronRight, Star, MapPin, Building, Home as HomeIcon, Briefcase, TrendingUp, LandPlot, Youtube } from 'lucide-react';
-import { cn } from './lib/utils';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { onAuthStateChanged, type User } from 'firebase/auth';
+import { auth, logout } from './firebase';
+import { motion } from 'motion/react';
 
-// --- Components ---
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import LeadForm from './components/LeadForm';
@@ -22,7 +19,6 @@ import AdminDashboard from './components/AdminDashboard';
 import InvestorBuyerSections from './components/InvestorBuyerSections';
 import CTASection from './components/CTASection';
 
-// --- Pages ---
 import GreaterNoida from './pages/GreaterNoida';
 import Noida from './pages/Noida';
 import NoidaExtension from './pages/NoidaExtension';
@@ -31,37 +27,25 @@ import Delhi from './pages/Delhi';
 import SVGCentralSquare from './pages/SVGCentralSquare';
 import CRCThePeridona from './pages/CRCThePeridona';
 import AceArteSector150Noida from './pages/AceArteSector150Noida';
-import '../src/styles-ace-arte.css';
+import './styles-ace-arte.css';
+import HeroHomesSectorMU from './pages/HeroHomesSectorMU';
+import './styles-hero-homes.css';
 
-const ADMIN_EMAIL = "rayashbrothers@gmail.com";
+const ADMIN_EMAIL = 'realprop201301@gmail.com';
 
 function HomePage() {
   return (
     <div className="bg-white">
       <Hero />
       <InvestorBuyerSections />
-      <div id="lead-form" className="py-16 bg-gray-50">
-        <LeadForm />
-      </div>
-      <div id="projects" className="py-16">
-        <ProjectsSection />
-      </div>
-      <div id="youtube" className="py-16 bg-gray-50">
-        <YouTubeSection />
-      </div>
-      <div id="about" className="py-16">
-        <About />
-      </div>
-      <div id="why-choose-us" className="py-16 bg-gray-50">
-        <WhyChooseUs />
-      </div>
-      <div id="testimonials" className="py-16">
-        <Testimonials />
-      </div>
+      <div id="lead-form" className="py-16 bg-gray-50"><LeadForm /></div>
+      <div id="projects" className="py-16"><ProjectsSection /></div>
+      <div id="youtube" className="py-16 bg-gray-50"><YouTubeSection /></div>
+      <div id="about" className="py-16"><About /></div>
+      <div id="why-choose-us" className="py-16 bg-gray-50"><WhyChooseUs /></div>
+      <div id="testimonials" className="py-16"><Testimonials /></div>
       <CTASection />
-      <div id="contact" className="py-16 bg-gray-50">
-        <Contact />
-      </div>
+      <div id="contact" className="py-16 bg-gray-50"><Contact /></div>
     </div>
   );
 }
@@ -69,45 +53,32 @@ function HomePage() {
 export default function App() {
   const [user, setUser] = useState<User | null>(null);
   const [isAuthReady, setIsAuthReady] = useState(false);
-  const [isCustomAdmin, setIsCustomAdmin] = useState(false);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (u) => {
-      setUser(u);
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
       setIsAuthReady(true);
     });
-    
-    // Check for custom admin session
-    const adminSession = sessionStorage.getItem('realprop_admin_session');
-    if (adminSession === 'true') {
-      setIsCustomAdmin(true);
-    }
-
-    return () => unsubscribe();
+    return unsubscribe;
   }, []);
 
-  const isAdmin = (user?.email?.toLowerCase() === ADMIN_EMAIL.toLowerCase()) || isCustomAdmin;
+  const isAdmin = Boolean(
+    user &&
+    user.emailVerified &&
+    user.email?.toLowerCase() === ADMIN_EMAIL
+  );
 
-  const handleCustomLogin = (success: boolean) => {
-    if (success) {
-      setIsCustomAdmin(true);
-      sessionStorage.setItem('realprop_admin_session', 'true');
-    }
-  };
-
-  const handleCustomLogout = () => {
-    setIsCustomAdmin(false);
-    sessionStorage.removeItem('realprop_admin_session');
-    logout();
+  const handleLogout = () => {
+    void logout().catch((error) => console.error('Admin sign-out failed:', error));
   };
 
   if (!isAuthReady) {
     return (
       <div className="h-screen w-screen flex flex-col items-center justify-center bg-white">
         <div className="w-32 h-32 mb-8 animate-pulse">
-          <img 
-            src="https://instasize.com/api/image/87e2fdb8828fd9cdfa4566774e9ba73c587ea743872310c777de048c2b9dd4b1.jpeg" 
-            alt="REAL PROP" 
+          <img
+            src="https://instasize.com/api/image/87e2fdb8828fd9cdfa4566774e9ba73c587ea743872310c777de048c2b9dd4b1.jpeg"
+            alt="REAL PROP"
             className="w-full h-full object-contain"
             referrerPolicy="no-referrer"
           />
@@ -115,7 +86,7 @@ export default function App() {
         <div className="flex flex-col items-center space-y-4">
           <motion.div
             animate={{ rotate: 360 }}
-            transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+            transition={{ repeat: Infinity, duration: 1, ease: 'linear' }}
             className="w-12 h-12 border-4 border-red-600 border-t-transparent rounded-full"
           />
           <p className="text-gray-500 font-bold tracking-widest uppercase text-xs">Loading REAL PROP</p>
@@ -126,12 +97,7 @@ export default function App() {
 
   return (
     <Router>
-      <AppShell
-        isAdmin={isAdmin}
-        user={user}
-        handleCustomLogin={handleCustomLogin}
-        handleCustomLogout={handleCustomLogout}
-      />
+      <AppShell isAdmin={isAdmin} user={user} onLogout={handleLogout} />
     </Router>
   );
 }
@@ -139,23 +105,22 @@ export default function App() {
 function AppShell({
   isAdmin,
   user,
-  handleCustomLogin,
-  handleCustomLogout,
+  onLogout,
 }: {
   isAdmin: boolean;
   user: User | null;
-  handleCustomLogin: (success: boolean) => void;
-  handleCustomLogout: () => void;
+  onLogout: () => void;
 }) {
   const location = useLocation();
-  const isCRCProject = location.pathname === '/projects/crc-the-peridona';
-  const isAceArteProject = location.pathname === '/projects/ace-arte-sector-150-noida';
 
-  if (isCRCProject) {
+  if (location.pathname === '/projects/crc-the-peridona') {
     return <CRCThePeridona />;
   }
-  if (isAceArteProject) {
+  if (location.pathname === '/projects/ace-arte-sector-150-noida') {
     return <AceArteSector150Noida />;
+  }
+  if (location.pathname === '/projects/hero-homes-sector-mu-greater-noida') {
+    return <HeroHomesSectorMU />;
   }
 
   return (
@@ -172,7 +137,18 @@ function AppShell({
           <Route path="/projects/svg-central-square" element={<SVGCentralSquare />} />
           <Route path="/projects/crc-the-peridona" element={<CRCThePeridona />} />
           <Route path="/projects/ace-arte-sector-150-noida" element={<AceArteSector150Noida />} />
-          <Route path="/admin/*" element={<AdminDashboard user={user} isAdmin={isAdmin} onLogin={handleCustomLogin} onLogout={handleCustomLogout} />} />
+          <Route path="/projects/hero-homes-sector-mu-greater-noida" element={<HeroHomesSectorMU />} />
+          <Route
+            path="/admin/*"
+            element={
+              <AdminDashboard
+                user={user}
+                isAdmin={isAdmin}
+                onLogin={() => { /* Legacy prop retained for compatibility; never grants access. */ }}
+                onLogout={onLogout}
+              />
+            }
+          />
         </Routes>
       </main>
       <Footer />

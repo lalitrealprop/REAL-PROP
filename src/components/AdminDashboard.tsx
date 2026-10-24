@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
+import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { User } from 'firebase/auth';
-import { db, auth, signInWithGoogle, logout, handleFirestoreError, OperationType } from '../firebase';
+import { db, signInWithGoogle, logout, handleFirestoreError, OperationType } from '../firebase';
 import { collection, query, orderBy, onSnapshot, addDoc, updateDoc, deleteDoc, doc, serverTimestamp, getCountFromServer } from 'firebase/firestore';
 import { Project, Lead } from '../types';
 import { useForm, useWatch } from 'react-hook-form';
@@ -118,19 +118,24 @@ function ConfirmationModal({
   );
 }
 
-export default function AdminDashboard({ user, isAdmin, onLogin, onLogout }: { user: User | null, isAdmin: boolean, onLogin: (success: boolean) => void, onLogout: () => void }) {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+export default function AdminDashboard({ isAdmin, onLogout }: { user: User | null, isAdmin: boolean, onLogin: (success: boolean) => void, onLogout: () => void }) {
   const [error, setError] = useState('');
-  const navigate = useNavigate();
+  const [signingIn, setSigningIn] = useState(false);
+  const location = useLocation();
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (username === 'lalit.official2898' && password === 'Newindia@1234') {
-      onLogin(true);
-      setError('');
-    } else {
-      setError('Invalid username or password');
+  const handleLogin = async () => {
+    setError('');
+    setSigningIn(true);
+    try {
+      const result = await signInWithGoogle();
+      if (result.user.email?.toLowerCase() !== 'realprop201301@gmail.com') {
+        await logout();
+        setError('This Google account is not authorized for REAL PROP administration.');
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Google sign-in failed. Please try again.');
+    } finally {
+      setSigningIn(false);
     }
   };
 
@@ -147,52 +152,26 @@ export default function AdminDashboard({ user, isAdmin, onLogin, onLogout }: { u
               <Lock size={40} />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">Admin Login</h2>
-            <p className="text-gray-500 mt-2">Enter your credentials to access the panel</p>
+            <p className="text-gray-500 mt-2">Sign in securely with your Google account</p>
           </div>
 
-          <form onSubmit={handleLogin} className="space-y-6">
-            <div>
-              <label className="block text-sm font-bold text-gray-700 mb-2">Username</label>
-              <input
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                className="w-full px-5 py-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all"
-                placeholder="Enter username"
-                required
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-bold text-gray-700 mb-2">Password</label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-5 py-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all"
-                placeholder="Enter password"
-                required
-              />
-            </div>
-
-            {error && (
-              <motion.div 
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                className="text-red-600 text-sm font-bold bg-red-50 p-4 rounded-xl flex items-center space-x-2"
-              >
-                <X size={16} />
-                <span>{error}</span>
-              </motion.div>
-            )}
-
+          <div className="space-y-5">
             <button
-              type="submit"
-              className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-4 rounded-xl shadow-lg shadow-red-200 flex items-center justify-center space-x-3 transition-all"
+              type="button"
+              onClick={handleLogin}
+              disabled={signingIn}
+              className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-4 rounded-xl shadow-lg flex items-center justify-center gap-3 disabled:opacity-60"
             >
-              <LogIn size={20} />
-              <span>Login to Dashboard</span>
+              {signingIn ? <Loader2 size={20} className="animate-spin" /> : <LogIn size={20} />}
+              <span>{signingIn ? 'Signing in...' : 'Continue with Google'}</span>
             </button>
-          </form>
+            {error && (
+              <p className="text-sm text-red-600 bg-red-50 p-3 rounded-xl" role="alert">{error}</p>
+            )}
+            <p className="text-xs text-center text-gray-500">
+              Sign in using the authorized REAL PROP Google account.
+            </p>
+          </div>
 
           <div className="mt-8 pt-8 border-t border-gray-100 text-center">
             <p className="text-xs text-gray-400 uppercase font-bold tracking-widest">Authorized Access Only</p>
@@ -923,3 +902,4 @@ function LeadManagement() {
     </div>
   );
 }
+
