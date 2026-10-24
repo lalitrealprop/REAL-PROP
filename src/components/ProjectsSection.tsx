@@ -15,6 +15,50 @@ const CATEGORIES = [
   { id: 'Plots', icon: LandPlot },
 ];
 
+const FEATURED_PROJECTS: Project[] = [
+  {
+    id: 'realprop-hero-homes-sector-mu',
+    title: 'Hero Homes Leafsong Retreat',
+    description: 'Explore premium residences at Sector MU, Greater Noida.',
+    location: 'Sector MU, Greater Noida',
+    type: 'Residential',
+    category: 'Residential',
+    image: '/hero-homes-sector-mu/hero.webp',
+    createdAt: null as any,
+  },
+  {
+    id: 'realprop-crc-the-peridona',
+    title: 'CRC The Peridona',
+    description: 'Ultra-luxury 4 & 5 BHK residences at Jaypee Greens, Greater Noida.',
+    location: 'Jaypee Greens, Greater Noida',
+    type: 'Residential',
+    category: 'Residential',
+    image: '/crc-the-peridona/images/hero/hero-bg.webp',
+    createdAt: null as any,
+  },
+  {
+    id: 'realprop-ace-arte',
+    title: 'ACE ARTE',
+    description: 'Expansive 3 & 4 BHK residences at Sector 150, Noida.',
+    location: 'Sector 150, Noida',
+    type: 'Residential',
+    category: 'Residential',
+    image: '/ace-arte/ace-arte-hero.jpeg',
+    createdAt: null as any,
+  },
+];
+
+function getProjectRoute(project: Project): string | null {
+  const name = (project.title || '').toLowerCase();
+  if (name.includes('hero homes') || name.includes('leafsong')) {
+    return '/projects/hero-homes-sector-mu-greater-noida';
+  }
+  if (name.includes('svg central square')) return '/projects/svg-central-square';
+  if (name.includes('crc the peridona')) return '/projects/crc-the-peridona';
+  if (name.includes('ace arte')) return '/projects/ace-arte-sector-150-noida';
+  return null;
+}
+
 export default function ProjectsSection({ title }: { title?: string }) {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
@@ -27,47 +71,33 @@ export default function ProjectsSection({ title }: { title?: string }) {
       setProjects(data);
       setLoading(false);
     }, (error) => {
+      setLoading(false);
       handleFirestoreError(error, OperationType.LIST, 'projects');
     });
     return () => unsubscribe();
   }, []);
 
-  const crcProject: Project = {
-    id: 'realprop-crc-the-peridona',
-    title: 'CRC The Peridona',
-    description: 'Ultra-luxury 4 & 5 BHK residences at Jaypee Greens, Greater Noida.',
-    location: 'Jaypee Greens, Greater Noida',
-    type: 'Residential',
-    category: 'Residential',
-    image: '/crc-the-peridona/images/hero/hero-bg.webp',
-    createdAt: null as any,
-  };
+  // Prefer the Firestore record when it exists, avoiding duplicate featured cards.
+  const hasMatchingProject = (featured: Project) =>
+    projects.some(project =>
+      project.id === featured.id ||
+      getProjectRoute(project) === getProjectRoute(featured) ||
+      project.title?.trim().toLowerCase() === featured.title.toLowerCase()
+    );
 
-  const aceArteProject: Project = {
-    id: 'realprop-ace-arte',
-    title: 'ACE ARTE',
-    description: 'Expansive 3 & 4 BHK residences at Sector 150, Noida.',
-    location: 'Sector 150, Noida',
-    type: 'Residential',
-    category: 'Residential',
-    image: '/ace-arte/ace-arte-hero.jpeg',
-    createdAt: null as any,
-  };
-
-  const withStaticProjects = [
-    ...(projects.some(p => p.title.toLowerCase().includes('ace arte')) ? [] : [aceArteProject]),
-    ...(projects.some(p => p.title.toLowerCase().includes('crc the peridona')) ? [] : [crcProject]),
+  const mergedProjects = [
+    ...FEATURED_PROJECTS.filter(featured => !hasMatchingProject(featured)),
+    ...projects,
   ];
-  const mergedProjects = [...withStaticProjects, ...projects];
 
   const filteredProjects = activeCategory === 'All'
     ? mergedProjects
-    : mergedProjects.filter(p => p.category === activeCategory);
+    : mergedProjects.filter(p => p.category === activeCategory || (!p.category && p.type === activeCategory));
 
   return (
     <div className="container mx-auto px-4">
       <div className="text-center mb-12">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -80,15 +110,14 @@ export default function ProjectsSection({ title }: { title?: string }) {
         <p className="text-gray-600 max-w-2xl mx-auto font-medium">Explore our wide range of premium properties in Noida, Greater Noida, and Delhi NCR.</p>
       </div>
 
-      {/* Category Filter */}
       <div className="flex overflow-x-auto md:flex-wrap md:justify-center gap-3 md:gap-4 mb-12 pb-4 md:pb-0 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
         {CATEGORIES.map((cat) => (
           <button
             key={cat.id}
             onClick={() => setActiveCategory(cat.id)}
             className={`flex items-center space-x-2 px-5 md:px-6 py-2.5 md:py-3 rounded-full font-medium transition-all whitespace-nowrap ${
-              activeCategory === cat.id 
-                ? 'bg-red-600 text-white shadow-lg shadow-red-600/30' 
+              activeCategory === cat.id
+                ? 'bg-red-600 text-white shadow-lg shadow-red-600/30'
                 : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'
             }`}
           >
@@ -103,88 +132,67 @@ export default function ProjectsSection({ title }: { title?: string }) {
           <Loader2 className="animate-spin text-red-600" size={40} />
         </div>
       ) : (
-        <motion.div 
-          layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project) => (
-              <motion.div
-                key={project.id}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3 }}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all border border-gray-100 group will-change-transform"
-              >
-                <div className="relative h-64 overflow-hidden">
-                  <img
-                    src={getDirectImageUrl(project.image)}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                    {project.type}
+            {filteredProjects.map((project) => {
+              const route = getProjectRoute(project);
+              const buttonClasses = 'w-full flex items-center justify-center space-x-2 bg-red-600 hover:bg-red-700 text-white py-4 rounded-xl font-black transition-all shadow-lg shadow-red-600/20 hover:shadow-red-600/40';
+              return (
+                <motion.div
+                  key={project.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3 }}
+                  className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all border border-gray-100 group will-change-transform"
+                >
+                  <div className="relative h-64 overflow-hidden">
+                    <img
+                      src={getDirectImageUrl(project.image)}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                      {project.type}
+                    </div>
                   </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center text-red-600 text-sm font-semibold mb-2">
-                    <MapPin size={14} className="mr-1" />
-                    <span>{project.location}</span>
+                  <div className="p-6">
+                    <div className="flex items-center text-red-600 text-sm font-semibold mb-2">
+                      <MapPin size={14} className="mr-1" />
+                      <span>{project.location}</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm mb-6 line-clamp-2">{project.description}</p>
+                    {route ? (
+                      <Link to={route} className={buttonClasses}>
+                        <span>VIEW PROJECT</span>
+                        <ChevronRight size={20} />
+                      </Link>
+                    ) : (
+                      <button
+                        onClick={() => {
+                          const heroForm = document.getElementById('lead-form-hero');
+                          if (heroForm) heroForm.scrollIntoView({ behavior: 'smooth' });
+                          else document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                        className={buttonClasses}
+                      >
+                        <span>GET DETAILS</span>
+                        <ChevronRight size={20} />
+                      </button>
+                    )}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm mb-6 line-clamp-2">
-                    {project.description}
-                  </p>
-                  {project.title.toLowerCase().includes('svg central square') ? (
-                    <Link
-                      to="/projects/svg-central-square"
-                      className="w-full flex items-center justify-center space-x-2 bg-red-600 hover:bg-red-700 text-white py-4 rounded-xl font-black transition-all shadow-lg shadow-red-600/20 hover:shadow-red-600/40"
-                    >
-                      <span>VIEW PROJECT</span>
-                      <ChevronRight size={20} />
-                    </Link>
-                  ) : project.title.toLowerCase().includes('crc the peridona') ? (
-                    <Link
-                      to="/projects/crc-the-peridona"
-                      className="w-full flex items-center justify-center space-x-2 bg-red-600 hover:bg-red-700 text-white py-4 rounded-xl font-black transition-all shadow-lg shadow-red-600/20 hover:shadow-red-600/40"
-                    >
-                      <span>VIEW PROJECT</span>
-                      <ChevronRight size={20} />
-                    </Link>
-                  ) : project.title.toLowerCase().includes('ace arte') ? (
-                    <Link
-                      to="/projects/ace-arte-sector-150-noida"
-                      className="w-full flex items-center justify-center space-x-2 bg-red-600 hover:bg-red-700 text-white py-4 rounded-xl font-black transition-all shadow-lg shadow-red-600/20 hover:shadow-red-600/40"
-                    >
-                      <span>VIEW PROJECT</span>
-                      <ChevronRight size={20} />
-                    </Link>
-                  ) : (
-                    <button 
-                      onClick={() => {
-                        const heroForm = document.getElementById('lead-form-hero');
-                        if (heroForm) heroForm.scrollIntoView({ behavior: 'smooth' });
-                        else document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                      className="w-full flex items-center justify-center space-x-2 bg-red-600 hover:bg-red-700 text-white py-4 rounded-xl font-black transition-all shadow-lg shadow-red-600/20 hover:shadow-red-600/40"
-                    >
-                      <span>GET DETAILS</span>
-                      <ChevronRight size={20} />
-                    </button>
-                  )}
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </AnimatePresence>
         </motion.div>
       )}
 
-      {/* Empty State */}
       {!loading && filteredProjects.length === 0 && (
         <div className="text-center py-20">
           <Building className="mx-auto text-gray-300 mb-4" size={64} />

@@ -31,6 +31,7 @@ export default function Navbar({ isAdmin }: { isAdmin: boolean }) {
     { name: 'SVG Central Square', href: '/projects/svg-central-square' },
     { name: 'CRC The Peridona', href: '/projects/crc-the-peridona' },
     { name: 'ACE ARTE', href: '/projects/ace-arte-sector-150-noida' },
+    { name: 'Hero Homes Leafsong Retreat', href: '/projects/hero-homes-sector-mu-greater-noida' },
   ];
   const locations = [
     { name: 'Greater Noida', href: '/greater-noida' }, { name: 'Noida', href: '/noida' },
