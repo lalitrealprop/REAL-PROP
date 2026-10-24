@@ -1,0 +1,22 @@
+
+{
+  "siteName": "REAL PROP",
+  "siteUrl": "https://realprop.online",
+  "pages": [
+    {
+      "path": "/",
+      "title": "REAL PROP | Property Investment Consultant Delhi NCR",
+      "description": "REAL PROP property investment consultancy for Noida, Greater Noida, Ghaziabad and Delhi NCR.",
+      "type": "website"
+    },
+    {
+      "path": "/projects/hero-homes-sector-mu-greater-noida",
+      "title": "Hero Homes Leafsong Retreat Sector MU Greater Noida | REAL PROP",
+      "description": "Explore Hero Homes Leafsong Retreat, Sector MU, Greater Noida. Luxury 3 BHK apartments, floor plans, amenities, latest pricing and site visits with REAL PROP.",
+      "type": "website",
+      "projectName": "Hero Homes Leafsong Retreat",
+      "location": "Sector MU, Greater Noida, Uttar Pradesh",
+      "image": "/hero-homes-sector-mu/towers.webp"
+    }
+  ]
+}
