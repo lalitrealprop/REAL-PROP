@@ -1,3 +1,4 @@
+
 import { Timestamp } from 'firebase/firestore';
 
 export interface Project {
@@ -15,9 +16,21 @@ export interface Lead {
   id: string;
   name: string;
   phone: string;
+
+  // Existing REAL PROP lead fields
   propertyInterest?: string;
+  propertyType?: string;
   budget?: string;
   location?: string;
   message?: string;
+
+  // Project-specific enquiries, including Hero Homes
+  project?: string;
+  projectId?: string;
+  configuration?: string;
+  enquiryPurpose?: string;
+  source?: string;
+  consentToContact?: boolean;
+
   createdAt: Timestamp;
 }
