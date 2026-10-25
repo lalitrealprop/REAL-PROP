@@ -13,8 +13,8 @@ export function initAnalytics(): void {
 
   window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function (...args: unknown[]) {
-    window.dataLayer!.push(args);
-  };
+  window.dataLayer!.push(arguments);
+};
 
   if (!document.getElementById('real-prop-ga4')) {
     const script = document.createElement('script');
