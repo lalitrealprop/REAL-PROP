@@ -2,8 +2,44 @@
 {
   "rewrites": [
     {
+      "source": "/projects",
+      "destination": "/projects/index.html"
+    },
+    {
+      "source": "/projects/svg-central-square",
+      "destination": "/projects/svg-central-square/index.html"
+    },
+    {
+      "source": "/projects/crc-the-peridona",
+      "destination": "/projects/crc-the-peridona/index.html"
+    },
+    {
+      "source": "/projects/ace-arte-sector-150-noida",
+      "destination": "/projects/ace-arte-sector-150-noida/index.html"
+    },
+    {
       "source": "/projects/hero-homes-sector-mu-greater-noida",
       "destination": "/projects/hero-homes-sector-mu-greater-noida/index.html"
+    },
+    {
+      "source": "/greater-noida",
+      "destination": "/greater-noida/index.html"
+    },
+    {
+      "source": "/noida",
+      "destination": "/noida/index.html"
+    },
+    {
+      "source": "/noida-extension",
+      "destination": "/noida-extension/index.html"
+    },
+    {
+      "source": "/ghaziabad",
+      "destination": "/ghaziabad/index.html"
+    },
+    {
+      "source": "/delhi",
+      "destination": "/delhi/index.html"
     },
     {
       "source": "/(.*)",

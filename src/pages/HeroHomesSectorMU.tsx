@@ -2,6 +2,10 @@
 import { useEffect, useState } from 'react';
 import HeroHomesLeadForm from '../components/HeroHomesLeadForm';
 import '../styles-hero-homes.css';
+import {
+  trackWhatsAppClicked,
+  trackCallClicked,
+} from '../lib/analytics';
 
 const PHONE = '9999882898';
 const PHONE_LINK = `tel:+91${PHONE}`;
@@ -274,22 +278,24 @@ export default function HeroHomesSectorMU() {
             </div>
 
             <div className="hh-contact-actions">
-              <a
-                className="hh-contact-call"
-                href={PHONE_LINK}
-              >
-                ☎ Call Now
-              </a>
+  <a
+    className="hh-contact-call"
+    href={PHONE_LINK}
+    onClick={() => trackCallClicked()}
+  >
+    ☎ Call Now
+  </a>
 
-              <a
-                className="hh-contact-whatsapp"
-                href={WHATSAPP_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                WhatsApp Enquiry ↗
-              </a>
-            </div>
+  <a
+    className="hh-contact-whatsapp"
+    href={WHATSAPP_LINK}
+    target="_blank"
+    rel="noopener noreferrer"
+    onClick={() => trackWhatsAppClicked()}
+  >
+    WhatsApp Enquiry ↗
+  </a>
+</div>
 
             <div className="hero-bottom hh-hero-bottom">
               3 BHK RESIDENCES

@@ -6,8 +6,35 @@
     {
       "path": "/",
       "title": "REAL PROP | Property Investment Consultant Delhi NCR",
-      "description": "REAL PROP property investment consultancy for Noida, Greater Noida, Ghaziabad and Delhi NCR.",
+      "description": "REAL PROP provides property investment consultancy across Noida, Greater Noida, Ghaziabad and Delhi NCR. Explore residential and commercial projects.",
       "type": "website"
+    },
+    {
+      "path": "/projects",
+      "title": "Residential & Commercial Projects in Noida | REAL PROP",
+      "description": "Explore residential and commercial properties in Noida and Greater Noida, including Hero Homes, SVG Central Square, CRC The Peridona and ACE ARTE.",
+      "type": "website"
+    },
+    {
+      "path": "/projects/svg-central-square",
+      "title": "SVG Central Square Greater Noida | REAL PROP",
+      "description": "Explore SVG Central Square commercial retail and investment opportunities in Greater Noida. Project highlights, retail spaces and enquiries with REAL PROP.",
+      "type": "website",
+      "image": "/svg-central-square/svg-06.jpeg"
+    },
+    {
+      "path": "/projects/crc-the-peridona",
+      "title": "CRC The Peridona Jaypee Greens Greater Noida | REAL PROP",
+      "description": "Explore CRC The Peridona at Jaypee Greens, Greater Noida. Discover luxury 4 and 5 BHK residences, amenities and project enquiries with REAL PROP.",
+      "type": "website",
+      "image": "/crc-the-peridona/images/hero/hero-bg.webp"
+    },
+    {
+      "path": "/projects/ace-arte-sector-150-noida",
+      "title": "ACE ARTE Sector 150 Noida | 3 & 4 BHK | REAL PROP",
+      "description": "Explore ACE ARTE at Sector 150, Noida. Discover premium 3 and 4 BHK residences, project amenities, floor plans and enquiries with REAL PROP.",
+      "type": "website",
+      "image": "/ace-arte/ace-arte-hero.jpeg"
     },
     {
       "path": "/projects/hero-homes-sector-mu-greater-noida",
@@ -17,6 +44,36 @@
       "projectName": "Hero Homes Leafsong Retreat",
       "location": "Sector MU, Greater Noida, Uttar Pradesh",
       "image": "/hero-homes-sector-mu/towers.webp"
+    },
+    {
+      "path": "/greater-noida",
+      "title": "Property Investment in Greater Noida | REAL PROP",
+      "description": "Explore residential and commercial property investment opportunities in Greater Noida with REAL PROP, your independent property advisory partner.",
+      "type": "website"
+    },
+    {
+      "path": "/noida",
+      "title": "Residential & Commercial Property in Noida | REAL PROP",
+      "description": "Explore residential projects, commercial properties and property investment opportunities in Noida with REAL PROP.",
+      "type": "website"
+    },
+    {
+      "path": "/noida-extension",
+      "title": "Property Investment in Noida Extension | REAL PROP",
+      "description": "Explore residential and commercial properties in Noida Extension, Greater Noida West, with REAL PROP property advisory.",
+      "type": "website"
+    },
+    {
+      "path": "/ghaziabad",
+      "title": "Residential & Commercial Property in Ghaziabad | REAL PROP",
+      "description": "Explore property investment opportunities, residential projects and commercial properties in Ghaziabad with REAL PROP.",
+      "type": "website"
+    },
+    {
+      "path": "/delhi",
+      "title": "Property Investment Consultant in Delhi | REAL PROP",
+      "description": "Explore residential and commercial property investment opportunities in Delhi NCR with REAL PROP independent property advisory.",
+      "type": "website"
     }
   ]
 }
