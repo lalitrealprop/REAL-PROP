@@ -30,6 +30,7 @@ import AceArteSector150Noida from './pages/AceArteSector150Noida';
 import './styles-ace-arte.css';
 import HeroHomesSectorMU from './pages/HeroHomesSectorMU';
 import './styles-hero-homes.css';
+import ProjectsListing from './pages/ProjectsListing';
 
 const ADMIN_EMAIL = 'realprop201301@gmail.com';
 
@@ -138,6 +139,7 @@ function AppShell({
           <Route path="/projects/crc-the-peridona" element={<CRCThePeridona />} />
           <Route path="/projects/ace-arte-sector-150-noida" element={<AceArteSector150Noida />} />
           <Route path="/projects/hero-homes-sector-mu-greater-noida" element={<HeroHomesSectorMU />} />
+          <Route path="/projects" element={<ProjectsListing />} />
           <Route
             path="/admin/*"
             element={

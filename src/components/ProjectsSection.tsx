@@ -17,6 +17,17 @@ const CATEGORIES = [
 
 const FEATURED_PROJECTS: Project[] = [
   {
+  id: 'realprop-svg-central-square',
+  title: 'SVG Central Square',
+  description: 'Explore premium commercial retail and investment opportunities at SVG Central Square, Greater Noida.',
+  location: 'Greater Noida',
+  type: 'Commercial',
+  category: 'Commercial',
+  image: '/svg-central-square/svg-06.jpeg',
+  createdAt: null as any,
+},
+
+  {
     id: 'realprop-hero-homes-sector-mu',
     title: 'Hero Homes Leafsong Retreat',
     description: 'Explore premium residences at Sector MU, Greater Noida.',
@@ -46,6 +57,7 @@ const FEATURED_PROJECTS: Project[] = [
     image: '/ace-arte/ace-arte-hero.jpeg',
     createdAt: null as any,
   },
+  
 ];
 
 function getProjectRoute(project: Project): string | null {
