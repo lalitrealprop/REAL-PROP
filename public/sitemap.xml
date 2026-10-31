@@ -33,4 +33,9 @@
   <url>
     <loc>https://realprop.online/delhi</loc>
   </url>
+  <url>
+  <loc>https://realprop.online/projects/corbett-county-jim-corbett</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
 </urlset>

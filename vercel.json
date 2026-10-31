@@ -1,6 +1,9 @@
-
 {
   "rewrites": [
+    {
+  "source": "/projects/hero-homes-sector-mu-greater-noida(.*)Copy(.*)URL(.*)3\\.",
+  "destination": "/api/invalid-hero-url"
+    },
     {
       "source": "/projects",
       "destination": "/projects/index.html"
