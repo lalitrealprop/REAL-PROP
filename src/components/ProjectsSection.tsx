@@ -17,6 +17,17 @@ const CATEGORIES = [
 
 const FEATURED_PROJECTS: Project[] = [
   {
+  id: 'realprop-corbett-county',
+  title: 'Corbett County',
+  description:
+    'Explore residential plots, master site plan and indicative pricing in a nature-inspired development near Jim Corbett.',
+  location: 'Bail Parao, Ramnagar, Uttarakhand',
+  type: 'Plots',
+  category: 'Plots',
+  image: '/corbett-county/images/residential-master-plan.webp',
+  createdAt: null as any,
+  },
+  {
   id: 'realprop-svg-central-square',
   title: 'SVG Central Square',
   description: 'Explore premium commercial retail and investment opportunities at SVG Central Square, Greater Noida.',
@@ -62,6 +73,9 @@ const FEATURED_PROJECTS: Project[] = [
 
 function getProjectRoute(project: Project): string | null {
   const name = (project.title || '').toLowerCase();
+  if (name.includes('corbett county')) {
+  return '/projects/corbett-county-jim-corbett';
+  }
   if (name.includes('hero homes') || name.includes('leafsong')) {
     return '/projects/hero-homes-sector-mu-greater-noida';
   }

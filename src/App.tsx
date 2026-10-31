@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { onAuthStateChanged, type User } from 'firebase/auth';
 import { auth, logout } from './firebase';
@@ -31,6 +31,7 @@ import './styles-ace-arte.css';
 import HeroHomesSectorMU from './pages/HeroHomesSectorMU';
 import './styles-hero-homes.css';
 import ProjectsListing from './pages/ProjectsListing';
+import CorbettCounty from './pages/CorbettCounty';
 
 const ADMIN_EMAIL = 'realprop201301@gmail.com';
 
@@ -114,6 +115,9 @@ function AppShell({
 }) {
   const location = useLocation();
 
+  if (location.pathname === '/projects/corbett-county-jim-corbett') {
+    return <CorbettCounty />;
+  }
   if (location.pathname === '/projects/crc-the-peridona') {
     return <CRCThePeridona />;
   }
@@ -158,3 +162,4 @@ function AppShell({
     </div>
   );
 }
+
